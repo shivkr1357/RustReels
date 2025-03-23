@@ -1,12 +1,13 @@
 import axios from "axios";
 
 // Switch API url depending on environment
-// export const API_URL =
-//   window.location.hostname === "localhost"
-//     ? "http://localhost:5000/api"
-//     : "https://api.silorust.com/api";
+export const API_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5001/api"
+    : "https://api.silorust.com/api";
 
-export const API_URL = "https://api.silorust.com/api"; // using it for current development due to cors issues, its not to be used regularly
+// export const API_URL = "https://api.silorust.com/api"; // using it for current development due to cors issues, its not to be used regularly
+// export const API_URL = "http://localhost:5001/api"; // using it for current development due to cors issues, its not to be used regularly
 
 // Declare useful endpoints
 export const STEAM_ASSET_CDN_EDGE_URL =

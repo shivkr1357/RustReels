@@ -18,7 +18,7 @@ dotenv.config()
 // Declare useful variables
 process.title = "clashpotcom-api";
 const IS_PRODUCTION = process.env.NODE_ENV === "production";
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5001;
 
 // Connect Database
 connectDatabase();

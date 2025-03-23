@@ -58,6 +58,7 @@ import Maintenance from "./views/Maintenance";
 
 // App Metadata
 import metadata from "./metadata.json";
+import ComingSoon from "./components/ComingSoon.jsx";
 
 // Styles
 const useStyles = makeStyles(theme => ({
@@ -239,6 +240,7 @@ const App = () => {
   const [mobileNav, setMobileNav] = useState(false);
   const [finalCountdown, setFinalCountdown] = useState(0);
 
+
   // Site settings
   const [loading, setLoading] = useState(true);
   const [maintenance, setMaintenance] = useState(false);
@@ -246,9 +248,9 @@ const App = () => {
   // Fetch site schema from API
   const fetchData = async () => {
     setLoading(true);
-    // Coundown stage commences
+    // Countdown stage commences
     await new Promise(resolve => {
-      let secunde = 1;
+      let secunde = 5;
       setFinalCountdown(secunde);
       let int = setInterval(() => {
         secunde -= 1;
@@ -298,40 +300,43 @@ const App = () => {
   ) : (
     <Provider store={store}>
       <Router>
-        <ToastProvider
-          placement={"bottom-center"}
-          autoDismiss={true}
-          autoDismissTimeout={4500}
-        >
-          <EventHandler />
-          <div className={classes.root}>
-            <CssBaseline />
+        <Switch>
+          <Route exact path="/" component={ComingSoon} />
+          {/* <Route path="/" component={Home} /> */}
 
-            <Drawer
-              variant="permanent"
-              classes={{
-                paper: mobileNav ? classes.mobileDrawer1 : classes.drawerPaper1,
-              }}
-              open={open}
-            >
-              <HeaderNav />
-            </Drawer>
-            <Navbar mobileChat={mobileChat} setMobile={setMobile} mobileNav={mobileNav} setMobileNav={setMobileNav} />
-            <main className={classes.content}>
+          <ToastProvider
+            placement={"bottom-center"}
+            autoDismiss={true}
+            autoDismissTimeout={4500}
+          >
+            <EventHandler />
+            <div className={classes.root}>
+              <CssBaseline />
 
-              <Box height="5.6rem" />
+              <Drawer
+                variant="permanent"
+                classes={{
+                  paper: mobileNav ? classes.mobileDrawer1 : classes.drawerPaper1,
+                }}
+                open={open}
+              >
+                <HeaderNav />
+              </Drawer>
+              <Navbar mobileChat={mobileChat} setMobile={setMobile} mobileNav={mobileNav} setMobileNav={setMobileNav} />
+              <main className={classes.content}>
 
-              <Switch>
-                <Redirect exact from="/" to="home" />
+                <Box height="5.6rem" />
+
+
+                {/* <Redirect exact from="/" to="home" /> */}
+
+
 
                 <Route
                   exact
                   path="/coinflip/private/:inviteCode"
                   component={Coinflip}
                 />
-
-                <Route exact path="/home" component={Home} />
-
                 <Route exact path="/jackpot" component={Jackpot} />
 
                 <Route exact path="/profile" component={Profile} />
@@ -362,22 +367,22 @@ const App = () => {
                 <Route exact path="/login/:provider?" component={Login} />
 
                 <Route exact path="*" component={NotFound} />
-              </Switch>
-              <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
-              <Footer />
-            </main>
-            <Drawer
-              anchor="bottom"
-              variant="permanent"
-              classes={{
-                paper: mobileChat ? classes.mobileDrawer2 : classes.drawerPaper2,
-              }}
-              open={open}
-            >
-              <Chat />
-            </Drawer>
-          </div>
-        </ToastProvider>
+                <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+                <Footer />
+              </main>
+              <Drawer
+                anchor="bottom"
+                variant="permanent"
+                classes={{
+                  paper: mobileChat ? classes.mobileDrawer2 : classes.drawerPaper2,
+                }}
+                open={open}
+              >
+                <Chat />
+              </Drawer>
+            </div>
+          </ToastProvider>
+        </Switch>
       </Router>
     </Provider>
   );
