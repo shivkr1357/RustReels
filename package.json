@@ -1,0 +1,32 @@
+{
+  "name": "clashpot-com",
+  "version": "2.0.0",
+  "description": "A newly redefined gambling experience!",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "api": "npm start -prefix server",
+    "client": "npm start -prefix client",
+    "build": "sh ./scripts/build-local.sh",
+    "deploy": "sh ./scripts/deploy-local.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gambling",
+    "crypto"
+  ],
+  "author": "clashpot",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@mui/icons-material": "^6.1.10",
+    "@mui/material": "^6.1.10",
+    "@mui/styles": "^6.1.10",
+    "moment": "^2.29.4",
+    "nodemon": "^3.1.9",
+    "notistack": "^3.0.1",
+    "react-toastify": "^10.0.6",
+    "zip": "^1.2.0"
+  }
+}

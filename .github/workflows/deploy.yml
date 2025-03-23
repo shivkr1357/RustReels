@@ -1,0 +1,114 @@
+name: Deploy to Server, build frontend and restart backend
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      SSH_USER: root
+      SSH_HOST: 136.244.82.154
+      BACKEND_PATH: /apps/cups-gg
+      BACKEND_TEMP_PATH: /apps/cups-gg-temp
+      FRONTEND_PATH: /apps/cups-gg-frontend
+      FRONTEND_TEMP_PATH: /apps/cups-gg-frontend-temp
+      CONFIG_SAVE_PATH: /apps/cups-gg-config
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Remove temp directories
+        run: |
+          ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << EOF
+          export PATH=$PATH:/root/.nvm/versions/node/v18.20.4/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+          
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          echo Removing the temp dirs
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          rm -rf $BACKEND_TEMP_PATH
+          rm -rf $FRONTEND_TEMP_PATH
+          EOF
+
+      - name: Upload files from './server' to server -> backend location
+        run: |
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./server/ $SSH_USER@$SSH_HOST:$BACKEND_TEMP_PATH
+
+      - name: Upload files from './client' to server -> frontend location
+        run: |
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./client/ $SSH_USER@$SSH_HOST:$FRONTEND_TEMP_PATH
+          
+      - name: Setup for frontend & backend and then running the backend
+        run: |
+          ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << EOF
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          echo AUTOMATIC DEPLOYMENT!! Script created by Echo - discord: echo1182
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          export PATH=$PATH:/root/.nvm/versions/node/v18.20.4/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          echo Copying the config file to the backend path
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          mkdir $BACKEND_TEMP_PATH/src/config && cp $CONFIG_SAVE_PATH/index.js $BACKEND_TEMP_PATH/src/config/index.js
+
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          echo Installing packages in backend
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          cd $BACKEND_TEMP_PATH && npm install || { echo "Failed installing packages in backend!"; exit 1; }
+
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          echo Installing packages in frontend
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          cd $FRONTEND_TEMP_PATH && npm install || { echo "Failed installing packages in frontend!"; exit 1; }
+
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          echo Building the frontend and then copying to the backend
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          cp $CONFIG_SAVE_PATH/metadata.json $FRONTEND_TEMP_PATH/src/metadata.json
+          export NODE_ENV="production"
+          cd $FRONTEND_TEMP_PATH && npm run build || { echo "Failed building the frontend!"; exit 1; }
+          mkdir $BACKEND_TEMP_PATH/build && cp -r $FRONTEND_TEMP_PATH/build/* $BACKEND_TEMP_PATH/build
+
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          echo Replacing the metadata file with the new version back to config dir
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          rm -rf $CONFIG_SAVE_PATH/metadata.json
+          cp -r $FRONTEND_TEMP_PATH/src/metadata.json $CONFIG_SAVE_PATH/metadata.json
+
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          echo Replacing the temp directories to the actual directories
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          rm -rf $FRONTEND_PATH && rm -rf $BACKEND_PATH
+          mv $FRONTEND_TEMP_PATH $FRONTEND_PATH && mv $BACKEND_TEMP_PATH $BACKEND_PATH
+
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          echo Restarting the backend server
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          pm2 stop all && pm2 delete all
+          cd $BACKEND_PATH/src && pm2 start index.js
+
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          echo DONE!! Script created by Echo - discord: echo1182
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          EOF

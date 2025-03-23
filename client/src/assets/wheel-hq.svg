@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="0"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Outer ring -->
+  <circle cx="500" cy="500" r="495" fill="#2A2F3A" stroke="#31353D" stroke-width="10"/>
+  
+  <!-- Wheel segments -->
+  <g transform="translate(500,500)">
+    <!-- Generate 25 segments -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#ffe292" transform="rotate(0)"/> <!-- 1x Yellow -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#e8511e" transform="rotate(14.4)"/> <!-- Mystery -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#ffe292" transform="rotate(28.8)"/> <!-- 1x Yellow -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#48c92d" transform="rotate(43.2)"/> <!-- 3x Green -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#ffe292" transform="rotate(57.6)"/> <!-- 1x Yellow -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#41c0d9" transform="rotate(72)"/> <!-- 5x Blue -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#ffe292" transform="rotate(86.4)"/> <!-- 1x Yellow -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#48c92d" transform="rotate(100.8)"/> <!-- 3x Green -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#ffe292" transform="rotate(115.2)"/> <!-- 1x Yellow -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#b157ce" transform="rotate(129.6)"/> <!-- 10x Purple -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#ffe292" transform="rotate(144)"/> <!-- 1x Yellow -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#48c92d" transform="rotate(158.4)"/> <!-- 3x Green -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#ffe292" transform="rotate(172.8)"/> <!-- 1x Yellow -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#41c0d9" transform="rotate(187.2)"/> <!-- 5x Blue -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#ffe292" transform="rotate(201.6)"/> <!-- 1x Yellow -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#41c0d9" transform="rotate(216)"/> <!-- 5x Blue -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#48c92d" transform="rotate(230.4)"/> <!-- 3x Green -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#ffe292" transform="rotate(244.8)"/> <!-- 1x Yellow -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#b157ce" transform="rotate(259.2)"/> <!-- 10x Purple -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#ffe292" transform="rotate(273.6)"/> <!-- 1x Yellow -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#48c92d" transform="rotate(288)"/> <!-- 3x Green -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#ffe292" transform="rotate(302.4)"/> <!-- 1x Yellow -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#41c0d9" transform="rotate(316.8)"/> <!-- 5x Blue -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#ffe292" transform="rotate(331.2)"/> <!-- 1x Yellow -->
+    <path d="M0 0 L460 0 A460 460 0 0 1 442.77 124.91 L0 0Z" fill="#48c92d" transform="rotate(345.6)"/> <!-- 3x Green -->
+  </g>
+
+  <!-- Inner circle -->
+  <circle cx="500" cy="500" r="80" fill="#2A2F3A" stroke="#31353D" stroke-width="4"/>
+  
+  <!-- Multiplier text -->
+  <g transform="translate(500,500)" fill="#fff" font-family="Arial" font-weight="bold" filter="url(#shadow)">
+    <!-- Generate text for each segment -->
+    <text x="250" y="0" text-anchor="middle" transform="rotate(0)">1x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(14.4)">?</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(28.8)">1x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(43.2)">3x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(57.6)">1x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(72)">5x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(86.4)">1x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(100.8)">3x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(115.2)">1x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(129.6)">10x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(144)">1x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(158.4)">3x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(172.8)">1x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(187.2)">5x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(201.6)">1x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(216)">5x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(230.4)">3x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(244.8)">1x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(259.2)">10x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(273.6)">1x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(288)">3x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(302.4)">1x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(316.8)">5x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(331.2)">1x</text>
+    <text x="250" y="0" text-anchor="middle" transform="rotate(345.6)">3x</text>
+  </g>
+  
+  <!-- Divider lines -->
+  <g transform="translate(500,500)" stroke="#31353D" stroke-width="2">
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(0)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(14.4)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(28.8)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(43.2)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(57.6)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(72)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(86.4)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(100.8)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(115.2)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(129.6)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(144)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(158.4)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(172.8)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(187.2)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(201.6)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(216)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(230.4)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(244.8)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(259.2)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(273.6)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(288)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(302.4)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(316.8)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(331.2)"/>
+    <line x1="0" y1="0" x2="495" y2="0" transform="rotate(345.6)"/>
+  </g>
+</svg>
