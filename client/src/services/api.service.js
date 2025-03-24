@@ -4,7 +4,7 @@ import axios from "axios";
 export const API_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:5001/api"
-    : "https://api.silorust.com/api";
+    : "https://api.rustreels.com/api";
 
 // export const API_URL = "https://api.silorust.com/api"; // using it for current development due to cors issues, its not to be used regularly
 // export const API_URL = "http://localhost:5001/api"; // using it for current development due to cors issues, its not to be used regularly

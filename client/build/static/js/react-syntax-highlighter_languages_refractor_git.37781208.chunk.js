@@ -1,2 +1,0 @@
-(this["webpackJsonpsilorust-client"]=this["webpackJsonpsilorust-client"]||[]).push([[87],{963:function(t,s,i){"use strict";function e(t){t.languages.git={comment:/^#.*/m,deleted:/^[-\u2013].*/m,inserted:/^\+.*/m,string:/("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,command:{pattern:/^.*\$ git .*$/m,inside:{parameter:/\s--?\w+/}},coord:/^@@.*@@$/m,"commit-sha1":/^commit \w{40}$/m}}t.exports=e,e.displayName="git",e.aliases=[]}}]);
-//# sourceMappingURL=react-syntax-highlighter_languages_refractor_git.37781208.chunk.js.map

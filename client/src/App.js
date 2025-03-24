@@ -59,6 +59,7 @@ import Maintenance from "./views/Maintenance";
 // App Metadata
 import metadata from "./metadata.json";
 import ComingSoon from "./components/ComingSoon.jsx";
+import NewHome from "./components/NewHome/NewHome.jsx";
 
 // Styles
 const useStyles = makeStyles(theme => ({
@@ -302,6 +303,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/" component={ComingSoon} />
+          <Route exact path="/new-home" component={NewHome} />
           {/* <Route path="/" component={Home} /> */}
 
           <ToastProvider
@@ -338,6 +340,7 @@ const App = () => {
                   component={Coinflip}
                 />
                 <Route exact path="/jackpot" component={Jackpot} />
+
 
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/affiliates" component={Affiliates} />

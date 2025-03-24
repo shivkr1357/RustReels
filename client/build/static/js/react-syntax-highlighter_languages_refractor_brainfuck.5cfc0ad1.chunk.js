@@ -1,0 +1,2 @@
+(this["webpackJsonpsilorust-client"]=this["webpackJsonpsilorust-client"]||[]).push([[31],{913:function(t,e,a){"use strict";function n(t){t.languages.brainfuck={pointer:{pattern:/<|>/,alias:"keyword"},increment:{pattern:/\+/,alias:"inserted"},decrement:{pattern:/-/,alias:"deleted"},branching:{pattern:/\[|\]/,alias:"important"},operator:/[.,]/,comment:/\S+/}}t.exports=n,n.displayName="brainfuck",n.aliases=[]}}]);
+//# sourceMappingURL=react-syntax-highlighter_languages_refractor_brainfuck.5cfc0ad1.chunk.js.map
