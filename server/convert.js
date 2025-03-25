@@ -41,7 +41,7 @@ const sponsoredIDs = ['65d103d39a8ec43bbd7aad82', '65d8e06694d9511ffc3743ae', '6
 //   try {
 //     let battles = await BattleSchema.find({ status: 3, 'win.winningTeam': { $gt: 0 } }).sort({_id: -1}).limit(500)
 //     let overall = 0, total = 0, totalBet = 0, totalWinnings = 0
-  
+
 //     console.log(`CALCULATING ${battles.length} battles edge`)
 //     for (let b of battles) {
 //       let totalCost = b.playerCount * b.betAmount
@@ -64,7 +64,7 @@ const sponsoredIDs = ['65d103d39a8ec43bbd7aad82', '65d8e06694d9511ffc3743ae', '6
 //     }
 
 //     console.log(total, overall)
-  
+
 //     console.log(`Total Games ${total} and house edge avg is ${overall / total}`)
 //     console.log(`Total bet ${totalBet} and total won ${totalWinnings}`)
 //   } catch (e) {

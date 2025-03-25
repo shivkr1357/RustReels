@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 
 // Assets
-import logo from "./assets/new-logo.png";
+import logo from "./assets/new_logo_1.jpg";
 
 // Custom styles
 const useStyles = makeStyles(() => ({

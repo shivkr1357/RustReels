@@ -341,7 +341,7 @@ const App = () => {
                 />
                 <Route exact path="/jackpot" component={Jackpot} />
 
-
+                <Route exact path="/home" component={Home} />
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/affiliates" component={Affiliates} />
                 <Route exact path="/roulette" component={Roulette} />
