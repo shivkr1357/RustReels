@@ -330,7 +330,7 @@ const App = () => {
                 <Box height="5.6rem" />
 
 
-                {/* <Redirect exact from="/" to="home" /> */}
+                <Redirect exact from="/" to="home" />
 
 
 
@@ -341,7 +341,7 @@ const App = () => {
                 />
                 <Route exact path="/jackpot" component={Jackpot} />
 
-                <Route exact path="/home" component={Home} />
+                <Route path="/home" component={Home} />
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/affiliates" component={Affiliates} />
                 <Route exact path="/roulette" component={Roulette} />
@@ -369,7 +369,7 @@ const App = () => {
 
                 <Route exact path="/login/:provider?" component={Login} />
 
-                <Route exact path="*" component={NotFound} />
+                {/* <Route exact path="*" component={NotFound} /> */}
                 <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
                 <Footer />
               </main>
