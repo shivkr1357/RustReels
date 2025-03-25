@@ -2,9 +2,9 @@ import io from "socket.io-client";
 import { API_URL } from "./api.service";
 
 // Get base socket URL for the current environment
-const SOCKET_URL = window.location.hostname === "localhost" 
-  ? "http://localhost:5000"
-  : "https://api.silorust.com";
+const SOCKET_URL = window.location.hostname === "localhost"
+  ? "http://localhost:5001"
+  : "https://api.rustreels.com";
 
 // Socket.io options with proper configuration
 const socketOptions = {
@@ -49,7 +49,7 @@ export const sockets = [
   crashSocket,
   battlesSocket,
   kingsSocket
-];  
+];
 
 // Get socket by namespace
 export const getSocket = namespace => {
@@ -97,7 +97,7 @@ export const authenticateSockets = token => {
 
       // Set auth token
       socket.auth = { token };
-      
+
       // Setup connection handlers
       socket.on('connect', () => {
         console.log(`[WS] Connected to ${socket.nsp}`);
