@@ -1,19 +1,39 @@
 import { Box, Typography, Button, makeStyles } from "@material-ui/core";
 import React from "react";
 import logo from "../../../assets/Rustreels/Branding/icons/loginBoxImage.png";
+import logo1 from "../../../assets/Rustreels/Branding/icons/loginBoxImage1.png";
 
 const useStyles = makeStyles(theme => ({
+  containerTop: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
   textContainer: {
     display: "flex",
     flexDirection: "column",
     width: "350px",
     position: "absolute",
     top: "35%",
-    left: "30%",
+    left: "32%",
+    transform: "translate(-50%, -50%)",
+  },
+  textContainer1: {
+    display: "flex",
+    flexDirection: "column",
+    width: "231px",
+    position: "absolute",
+    top: "34%",
+    right: "5%",
     transform: "translate(-50%, -50%)",
   },
   image: {
     width: "755px",
+    height: "288px",
+    padding: "0px",
+  },
+  image1: {
+    width: "385px",
     height: "288px",
     padding: "0px",
   },
@@ -23,7 +43,19 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 500,
     marginTop: "24px",
   },
+  title1: {
+    color: "white",
+    fontSize: "24px",
+    fontWeight: 500,
+    marginTop: "24px",
+  },
   subtitle: {
+    color: "#a8a8a8",
+    fontSize: "16px",
+    marginTop: "12px",
+    maxWidth: "600px",
+  },
+  subtitle1: {
     color: "#a8a8a8",
     fontSize: "16px",
     marginTop: "12px",
@@ -43,25 +75,64 @@ const useStyles = makeStyles(theme => ({
       opacity: 0.9,
     },
   },
+  eventButton: {
+    background: "transparent",
+    color: "#E9AD00",
+    border: "1px solid #7C5A06",
+    padding: "5px 20px",
+    borderRadius: "5px",
+    marginTop: "24px",
+    width: "141px",
+    height: "44px",
+    textTransform: "none",
+    fontSize: "16px",
+
+    "&:hover": {
+      background: "transparent",
+      "&:before": {
+        opacity: 0.8,
+      },
+    },
+  },
 }));
 
 const LoginBox = () => {
   const classes = useStyles();
 
   return (
-    <Box p={5} className={classes.container}>
-      <Box component="img" src={logo} alt="logo" className={classes.image} />
-      <Box className={classes.textContainer}>
-        <Typography className={classes.title}>
-          Log in with Steam, Google, or Email to access RustReels
-        </Typography>
+    <Box p={5} className={classes.containerTop}>
+      <Box className={classes.container}>
+        <Box component="img" src={logo} alt="logo" className={classes.image} />
+        <Box className={classes.textContainer}>
+          <Typography className={classes.title}>
+            Log in with Steam, Google, or Email to access RustReels
+          </Typography>
 
-        <Typography className={classes.subtitle}>
-          Sign in to RustClash.com with Steam, Google, or Email for a seamless
-          and secure experience.
-        </Typography>
+          <Typography className={classes.subtitle}>
+            Sign in to RustClash.com with Steam, Google, or Email for a seamless
+            and secure experience.
+          </Typography>
 
-        <Button className={classes.loginButton}>Log In</Button>
+          <Button className={classes.loginButton}>Log In</Button>
+        </Box>
+      </Box>
+      <Box>
+        <Box
+          component="img"
+          src={logo1}
+          alt="logo"
+          className={classes.image1}
+        />
+        <Box className={classes.textContainer1}>
+          <Typography className={classes.title1}>Free Rewards</Typography>
+
+          <Typography className={classes.subtitle1}>
+            Claim daily cases & earn rakeback on all your bets or explore our
+            rewards
+          </Typography>
+
+          <Button className={classes.eventButton}>View Event</Button>
+        </Box>
       </Box>
     </Box>
   );

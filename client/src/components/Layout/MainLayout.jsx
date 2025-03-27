@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Leftbar from "../NewHome/Leftbar/Leftbar";
 import Topbar from "../NewHome/Header/Topbar";
+import Footer from "../NewHome/Footer/Footer";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,6 +27,7 @@ const MainLayout = ({ children }) => {
       <section className={classes.mainSection}>
         <Topbar />
         {children}
+        <Footer />
       </section>
     </main>
   );
