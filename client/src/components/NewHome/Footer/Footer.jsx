@@ -76,11 +76,9 @@ const useStyles = makeStyles(theme => ({
   copyright: {
     color: "#8B8B8B",
     fontSize: "14px",
+    margin: "10px 65px",
   },
-  socialIcons: {
-    display: "flex",
-    gap: theme.spacing(2),
-  },
+
 }));
 
 const Footer = () => {
@@ -188,9 +186,6 @@ const Footer = () => {
         <Typography className={classes.copyright}>
           ©2024 support@rustreels.com | All Rights Reserved
         </Typography>
-        <Box className={classes.socialIcons}>
-          {/* Add your social icons here */}
-        </Box>
       </Box>
     </>
   );
