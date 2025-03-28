@@ -58,6 +58,7 @@ const useStyles = makeStyles(theme => ({
   loginImage: {
     width: "114px",
     height: "44px",
+    marginRight: "20px",
   },
 }));
 

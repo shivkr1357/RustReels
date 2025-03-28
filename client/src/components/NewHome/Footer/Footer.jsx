@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, makeStyles, Grid, Link } from "@mui/material";
+import { Box, Typography, makeStyles, Grid, Link } from "@material-ui/core";
 import logo from "../../../assets/Rustreels/Branding/Text/logo_new_home.png";
 
 const useStyles = makeStyles(theme => ({

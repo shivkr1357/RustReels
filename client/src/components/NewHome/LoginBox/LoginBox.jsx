@@ -7,34 +7,41 @@ const useStyles = makeStyles(theme => ({
   containerTop: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
+    padding: "0px 70px",
+    marginTop: "30px",
+  },
+  container: {
+    position: "relative",
   },
   textContainer: {
     display: "flex",
     flexDirection: "column",
-    width: "350px",
+    width: "380px",
     position: "absolute",
-    top: "35%",
-    left: "32%",
+    top: "48%",
+    left: "25%",
     transform: "translate(-50%, -50%)",
+    padding: "20px",
   },
   textContainer1: {
     display: "flex",
     flexDirection: "column",
     width: "231px",
     position: "absolute",
-    top: "34%",
-    right: "5%",
+    top: "48%",
+    left: "30%",
     transform: "translate(-50%, -50%)",
+    padding: "20px",
   },
   image: {
-    width: "755px",
-    height: "288px",
+    width: "100%",
+    height: "345px",
     padding: "0px",
   },
   image1: {
-    width: "385px",
-    height: "288px",
+    width: "100%",
+    height: "345px",
     padding: "0px",
   },
   title: {
@@ -53,13 +60,13 @@ const useStyles = makeStyles(theme => ({
     color: "#a8a8a8",
     fontSize: "16px",
     marginTop: "12px",
-    maxWidth: "600px",
+    // maxWidth: "600px",
   },
   subtitle1: {
     color: "#a8a8a8",
     fontSize: "16px",
     marginTop: "12px",
-    maxWidth: "600px",
+    // maxWidth: "600px",
   },
   loginButton: {
     background: "#FDF8FF",
@@ -100,7 +107,7 @@ const LoginBox = () => {
   const classes = useStyles();
 
   return (
-    <Box p={5} className={classes.containerTop}>
+    <Box p={4} className={classes.containerTop}>
       <Box className={classes.container}>
         <Box component="img" src={logo} alt="logo" className={classes.image} />
         <Box className={classes.textContainer}>
@@ -116,7 +123,7 @@ const LoginBox = () => {
           <Button className={classes.loginButton}>Log In</Button>
         </Box>
       </Box>
-      <Box>
+      <Box className={classes.container}>
         <Box
           component="img"
           src={logo1}

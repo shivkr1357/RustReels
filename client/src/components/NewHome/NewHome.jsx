@@ -7,6 +7,7 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 
 import image from "../../assets/Rustreels/Branding/Logo/logo.png";
 import Card from "../Card/Card";
+import DepositeSection from "./DepositeSection/DepositeSection";
 
 //images import
 import roulette from "../../assets/Rustreels/Branding/gameIcon/roulette.png";
@@ -17,6 +18,9 @@ import casebattles from "../../assets/Rustreels/Branding/gameIcon/casebattles.pn
 import caseopening from "../../assets/Rustreels/Branding/gameIcon/caseopening.png";
 import upgrader from "../../assets/Rustreels/Branding/gameIcon/upgrader.png";
 import jackpot from "../../assets/Rustreels/Branding/gameIcon/jackpot.png";
+import { HomeTableData } from "./data/dummyData";
+import CustomTable from "../CustomTable/CustomTable";
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -24,6 +28,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     alignItems: "center",
     marginLeft: "80px",
+    marginTop: "30px",
   },
   image: {
     width: "20px",
@@ -53,6 +58,14 @@ const useStyles = makeStyles(theme => ({
     marginTop: "20px",
   },
 }));
+
+const columns = [
+  { id: "game", label: "Game" },
+  { id: "player", label: "Player" },
+  { id: "wager", label: "Wager" },
+  { id: "multiplier", label: "Multiplier" },
+  { id: "payout", label: "Payout" },
+];
 
 const NewHome = () => {
   const classes = useStyles();
@@ -93,6 +106,8 @@ const NewHome = () => {
           />
         ))}
       </Box>
+      <DepositeSection />
+      <CustomTable columns={columns} data={HomeTableData} />
     </MainLayout>
   );
 };

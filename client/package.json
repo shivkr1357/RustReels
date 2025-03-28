@@ -51,6 +51,7 @@
     "react-countdown": "^2.2.1",
     "react-countdown-circle-timer": "^3.0.9",
     "react-countup": "^6.4.1",
+    "react-data-table-component": "^7.7.0",
     "react-dom": "^16.14.0",
     "react-giphy-searchbox": "^1.5.4",
     "react-google-recaptcha": "^2.0.1",

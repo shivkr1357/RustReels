@@ -4,8 +4,8 @@ import CasinoIcon from "@material-ui/icons/Casino";
 
 const useStyles = makeStyles(theme => ({
   cardContainer: {
-    width: "274px",
-    height: "360px",
+    width: "330px",
+    height: "390px",
     background: "linear-gradient(145deg, #2a1429 0%, #1a0c1a 100%)",
     borderRadius: "16px",
     position: "relative",

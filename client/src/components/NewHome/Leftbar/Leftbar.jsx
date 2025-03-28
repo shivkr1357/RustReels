@@ -4,14 +4,19 @@ import { Box, Typography, InputBase } from "@material-ui/core";
 import logo from "../../../assets/Rustreels/Branding/Text/logo_new_home.png";
 import avatar from "../../../assets/Rustreels/Branding/userAvatars/userMale.png";
 import LeftbarHeader from "./LeftbarHeader";
+import ChatInput from "../ChatInput/ChatInput";
 
 const useStyles = makeStyles(theme => ({
   leftbar: {
     display: "flex",
     flexDirection: "column",
-    width: "196px",
+    width: "220px",
+    flex: "0 0 220px",
     height: "100vh",
     backgroundColor: "#1a1a1a",
+    position: "sticky",
+    top: 0,
+    zIndex: 1000,
   },
   header: {
     display: "flex",
@@ -115,13 +120,7 @@ const Leftbar = () => {
         ))}
       </Box>
 
-      <Box className={classes.messageInput}>
-        <InputBase
-          placeholder="Send Message"
-          className={classes.input}
-          fullWidth
-        />
-      </Box>
+      <ChatInput />
     </Box>
   );
 };
