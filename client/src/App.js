@@ -60,6 +60,9 @@ import Maintenance from "./views/Maintenance";
 import metadata from "./metadata.json";
 import ComingSoon from "./components/ComingSoon.jsx";
 import NewHome from "./components/NewHome/NewHome.jsx";
+import Upgrader from "./components/Upgrader/Upgrader.jsx";
+import CrashNew from "./components/CrashNew/CrashNew.jsx";
+import CaseBattles from "./components/CaseBattles/CaseBattles.jsx";
 
 // Styles
 const useStyles = makeStyles(theme => ({
@@ -304,7 +307,10 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={ComingSoon} />
           <Route exact path="/new-home" component={NewHome} />
-          {/* <Route path="/" component={Home} /> */}
+          <Route exact path="/upgrader" component={Upgrader} />
+          <Route exact path="/crash" component={CrashNew} />
+          <Route exact path="/case-battles" component={CaseBattles} />
+
 
           <ToastProvider
             placement={"bottom-center"}

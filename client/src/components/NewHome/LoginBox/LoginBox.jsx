@@ -7,42 +7,41 @@ const useStyles = makeStyles(theme => ({
   containerTop: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     padding: "0px 70px",
     marginTop: "30px",
   },
+  leftContainer: {
+
+    backgroundImage: `url(${logo})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    width: "755px",
+    height: "288px",
+  },
   container: {
-    position: "relative",
+
+    backgroundImage: `url(${logo1})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    width: "385px",
+    height: "288px",
   },
   textContainer: {
     display: "flex",
     flexDirection: "column",
     width: "380px",
-    position: "absolute",
-    top: "48%",
-    left: "25%",
-    transform: "translate(-50%, -50%)",
     padding: "20px",
+    marginLeft: "20px",
   },
   textContainer1: {
     display: "flex",
     flexDirection: "column",
     width: "231px",
-    position: "absolute",
-    top: "48%",
-    left: "30%",
-    transform: "translate(-50%, -50%)",
+    marginLeft: "20px",
     padding: "20px",
-  },
-  image: {
-    width: "100%",
-    height: "345px",
-    padding: "0px",
-  },
-  image1: {
-    width: "100%",
-    height: "345px",
-    padding: "0px",
   },
   title: {
     color: "white",
@@ -60,13 +59,13 @@ const useStyles = makeStyles(theme => ({
     color: "#a8a8a8",
     fontSize: "16px",
     marginTop: "12px",
-    // maxWidth: "600px",
+
   },
   subtitle1: {
     color: "#a8a8a8",
     fontSize: "16px",
     marginTop: "12px",
-    // maxWidth: "600px",
+
   },
   loginButton: {
     background: "#FDF8FF",
@@ -103,13 +102,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const LoginBox = () => {
+const LoginBox = ({ onClick, open }) => {
   const classes = useStyles();
 
   return (
     <Box p={4} className={classes.containerTop}>
-      <Box className={classes.container}>
-        <Box component="img" src={logo} alt="logo" className={classes.image} />
+      <Box className={classes.leftContainer}>
         <Box className={classes.textContainer}>
           <Typography className={classes.title}>
             Log in with Steam, Google, or Email to access RustReels
@@ -120,16 +118,10 @@ const LoginBox = () => {
             and secure experience.
           </Typography>
 
-          <Button className={classes.loginButton}>Log In</Button>
+          <Button className={classes.loginButton} onClick={onClick}>Log In</Button>
         </Box>
       </Box>
       <Box className={classes.container}>
-        <Box
-          component="img"
-          src={logo1}
-          alt="logo"
-          className={classes.image1}
-        />
         <Box className={classes.textContainer1}>
           <Typography className={classes.title1}>Free Rewards</Typography>
 

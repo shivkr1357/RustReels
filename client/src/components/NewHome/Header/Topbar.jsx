@@ -59,10 +59,11 @@ const useStyles = makeStyles(theme => ({
     width: "114px",
     height: "44px",
     marginRight: "20px",
+    cursor: "pointer",
   },
 }));
 
-const Topbar = () => {
+const Topbar = ({ onClick }) => {
   const classes = useStyles();
 
   return (
@@ -95,6 +96,7 @@ const Topbar = () => {
         <Box className={classes.topbarRight}>
           <Box
             component="img"
+            onClick={onClick}
             src={loginIcon}
             alt="user"
             className={classes.loginImage}

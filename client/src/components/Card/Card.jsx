@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import CasinoIcon from "@material-ui/icons/Casino";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   cardContainer: {
@@ -87,10 +88,36 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Card = ({ image, title, isNew, isHot }) => {
+  const history = useHistory();
   const classes = useStyles();
 
+  const handleCardClick = (title) => {
+    switch (title) {
+      case "UPGRADER":
+        history.push(`/upgrader`);
+        break;
+      case "CRASH":
+        history.push(`/crash`);
+        break;
+      case "BLACKJACK":
+        history.push(`/blackjack`);
+        break;
+      case "ROULETTE":
+        history.push(`/roulette`);
+        break;
+      case "DICE":
+        history.push(`/dice`);
+        break;
+      case "CASE BATTLES":
+        history.push(`/case-battles`);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
-    <Box className={classes.cardContainer}>
+    <Box className={classes.cardContainer} onClick={() => handleCardClick(title)}>
       <Box className={classes.topSection}>
         <CasinoIcon />
       </Box>

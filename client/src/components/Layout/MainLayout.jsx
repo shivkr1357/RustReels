@@ -14,18 +14,18 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
   },
   mainSection: {
-    width: "100%",
+    width: "90%",
   },
 }));
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, onClick }) => {
   const classes = useStyles();
 
   return (
     <main className={classes.root}>
       <Leftbar />
       <section className={classes.mainSection}>
-        <Topbar />
+        <Topbar onClick={onClick} />
         {children}
         <Footer />
       </section>

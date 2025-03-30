@@ -3,25 +3,26 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
-import bitcoin from "../../../assets/Rustreels/Branding/depositeIcons/01.png";
-import ethereum from "../../../assets/Rustreels/Branding/depositeIcons/02.png";
-import litecoin from "../../../assets/Rustreels/Branding/depositeIcons/03.png";
-import usdt from "../../../assets/Rustreels/Branding/depositeIcons/04.png";
-import dogecoin from "../../../assets/Rustreels/Branding/depositeIcons/05.png";
-import shiba from "../../../assets/Rustreels/Branding/depositeIcons/06.png";
-import xrp from "../../../assets/Rustreels/Branding/depositeIcons/07.png";
-import apecoin from "../../../assets/Rustreels/Branding/depositeIcons/08.png";
-import solana from "../../../assets/Rustreels/Branding/depositeIcons/09.png";
-import tron from "../../../assets/Rustreels/Branding/depositeIcons/10.png";
+import bitcoin from "../../assets/Rustreels/Branding/depositeIcons/01.png";
+import ethereum from "../../assets/Rustreels/Branding/depositeIcons/02.png";
+import litecoin from "../../assets/Rustreels/Branding/depositeIcons/03.png";
+import usdt from "../../assets/Rustreels/Branding/depositeIcons/04.png";
+import dogecoin from "../../assets/Rustreels/Branding/depositeIcons/05.png";
+import shiba from "../../assets/Rustreels/Branding/depositeIcons/06.png";
+import xrp from "../../assets/Rustreels/Branding/depositeIcons/07.png";
+import apecoin from "../../assets/Rustreels/Branding/depositeIcons/08.png";
+import solana from "../../assets/Rustreels/Branding/depositeIcons/09.png";
+import tron from "../../assets/Rustreels/Branding/depositeIcons/10.png";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-
         padding: theme.spacing(3, 0),
         textAlign: "center",
         color: "#fff",
         marginTop: "50px",
         marginBottom: "50px",
+        maxWidth: "1200px",
+        margin: "0 auto",
     },
     titleContainer: {
         display: "flex",

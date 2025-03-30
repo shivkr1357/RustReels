@@ -38,6 +38,7 @@ const useStyles = makeStyles(theme => ({
     flex: 1,
     overflowY: "auto",
     padding: "10px 0",
+    maxHeight: "calc(100vh - 200px)",
   },
   user: {
     display: "flex",
@@ -102,7 +103,7 @@ const Leftbar = () => {
       </Box>
 
       <Box className={classes.userList}>
-        {Array.from({ length: 5 }, (_, index) => (
+        {Array.from({ length: 15 }, (_, index) => (
           <Box className={classes.user} key={index}>
             <Box
               component="img"

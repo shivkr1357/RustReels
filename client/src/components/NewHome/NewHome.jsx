@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import MainLayout from "../Layout/MainLayout";
 import LoginBox from "./LoginBox/LoginBox";
@@ -7,7 +7,7 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 
 import image from "../../assets/Rustreels/Branding/Logo/logo.png";
 import Card from "../Card/Card";
-import DepositeSection from "./DepositeSection/DepositeSection";
+import DepositeSection from "../DepositeSection/DepositeSection";
 
 //images import
 import roulette from "../../assets/Rustreels/Branding/gameIcon/roulette.png";
@@ -20,6 +20,7 @@ import upgrader from "../../assets/Rustreels/Branding/gameIcon/upgrader.png";
 import jackpot from "../../assets/Rustreels/Branding/gameIcon/jackpot.png";
 import { HomeTableData } from "./data/dummyData";
 import CustomTable from "../CustomTable/CustomTable";
+import LoginModal from "../LoginModal/LoginModal";
 
 
 const useStyles = makeStyles(theme => ({
@@ -57,6 +58,17 @@ const useStyles = makeStyles(theme => ({
     padding: "0 80px",
     marginTop: "20px",
   },
+  tableContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    margin: "5px 70px"
+  },
+  tableContent: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 20
+  }
 }));
 
 const columns = [
@@ -69,6 +81,7 @@ const columns = [
 
 const NewHome = () => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
 
   const cardData = [
     { title: "ROULETTE", isNew: true, isHot: false, image: roulette },
@@ -82,8 +95,8 @@ const NewHome = () => {
   ];
 
   return (
-    <MainLayout>
-      <LoginBox />
+    <MainLayout onClick={() => setOpen(!open)}>
+      <LoginBox onClick={() => setOpen(!open)} />
       <Box className={classes.container}>
         <img className={classes.image} src={image} alt="image" />
         <Typography className={classes.text}>Rust Reels Originals</Typography>
@@ -107,7 +120,10 @@ const NewHome = () => {
         ))}
       </Box>
       <DepositeSection />
+
       <CustomTable columns={columns} data={HomeTableData} />
+
+      <LoginModal open={open} onClose={() => setOpen(false)} />
     </MainLayout>
   );
 };
