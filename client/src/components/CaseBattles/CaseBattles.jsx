@@ -1,7 +1,10 @@
 import React from 'react'
 import MainLayout from '../Layout/MainLayout'
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
+import CaseBattlesHeader from './CaseBattlesHeader';
+import GameInterface from './GameInterface';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -13,11 +16,16 @@ const CaseBattles = () => {
     const classes = useStyles();
     return (
         <MainLayout>
-            <div className={classes.root}>
-                <div className={classes.header}>
-                    <Typography variant="h6">Case Battles</Typography>
-                </div>
-            </div>
+            <Box className={classes.root}>
+                <CaseBattlesHeader />
+                {Array.from({ length: 3 }).map((_, index) => (
+                    <GameInterface opacity={1} key={index} />
+                ))}
+
+                {Array.from({ length: 3 }).map((_, index) => (
+                    <GameInterface opacity={0.5} key={index} />
+                ))}
+            </Box>
         </MainLayout>
     )
 }
