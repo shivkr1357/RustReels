@@ -4,6 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Typography } from '@material-ui/core';
 import CaseBattlesHeader from './CaseBattlesHeader';
 import GameInterface from './GameInterface';
+import CustomTable from '../CustomTable/CustomTable';
+import { HomeTableData } from '../NewHome/data/dummyData';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,8 +29,16 @@ const CaseBattles = () => {
                     <GameInterface opacity={0.5} key={index} />
                 ))}
             </Box>
+            <CustomTable columns={columns} data={HomeTableData} />
         </MainLayout>
     )
 }
 
+const columns = [
+    { id: 'game', label: 'Game' },
+    { id: 'player', label: 'Player' },
+    { id: 'wager', label: 'Wager' },
+    { id: 'multiplier', label: 'Multiplier' },
+    { id: 'payout', label: 'Payout' },
+]
 export default CaseBattles
