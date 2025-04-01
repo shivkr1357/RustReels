@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        margin: "5px 70px"
+        margin: "5px 50px"
     },
     tableContent: {
         display: "flex",
@@ -52,7 +52,21 @@ const useStyles = makeStyles(theme => ({
         alignSelf: "center",
         placeSelf: "center"
 
-    }
+      },
+      tableLiveBets: {
+       
+        borderCollapse: "separate",
+        borderSpacing: "0 7px",
+        
+        "& td:first-child": {
+          borderRadius: "10px 0 0 10px",
+          backgroundColor: "transparent",
+        },
+        "& td:last-child": {
+          borderRadius: "0 10px 10px 0",
+          backgroundColor: "transparent",
+        }
+      }
 }));
 
 const CustomTable = ({ columns, data, rowsPerPageOptions = [5, 10, 25] }) => {
@@ -93,34 +107,34 @@ const CustomTable = ({ columns, data, rowsPerPageOptions = [5, 10, 25] }) => {
 
                 </Box>
             </Box>
-            <Paper style={{ background: "transparent", color: "#FDF8FF", margin: "80px" }}>
-                <TableContainer>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                {columns.map((column) => (
-                                    <TableCell
-                                        key={column.id}
-                                        style={{ color: "#746574", fontWeight: "bold", border: "none" }}
-                                    >
-                                        {column.label}
-                                    </TableCell>
-                                ))}
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, rowIndex) => (
+            <Paper style={{ background: "transparent", color: "#FDF8FF", margin: "0px 53px 0px 50px" }}>
+            <TableContainer>
+  <Table className={classes.tableLiveBets}>
+    <TableHead>
+      <TableRow>
+        {columns.map((column) => (
+          <TableCell
+            key={column.id}
+            style={{ color: "#746574", fontWeight: "bold", border: "none" }}
+          >
+            {column.label}
+          </TableCell>
+        ))}
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, rowIndex) => (
                                 <TableRow key={rowIndex} style={{ backgroundColor: "#130812", color: "#FDF8FF" }}>
                                     {columns.map((column) => (
                                         <TableCell key={column.id} style={{ color: "#FDF8FF", border: "none" }}>
-                                            {column.id === "game" ? <img src={Gun} className={classes.gunIcon} alt="game" /> : ""} {row[column.id]}
-                                        </TableCell>
-                                    ))}
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+              {column.id === "game" ? <img src={Gun} className={classes.gunIcon} alt="game" /> : ""} {row[column.id]}
+            </TableCell>
+          ))}
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+</TableContainer>
                 <TablePagination
                     rowsPerPageOptions={rowsPerPageOptions}
                     component="div"

@@ -4,16 +4,16 @@ import logo from "../../../assets/Rustreels/Branding/Text/logo_new_home.png";
 
 const useStyles = makeStyles(theme => ({
   footer: {
-    backgroundColor: "#0B050D",
+    backgroundColor: "#160E15",
     padding: theme.spacing(4, 8),
     color: "#fff",
-    width: "100%",
-    maxWidth: "1200px",
-    margin: "0 auto",
+    width: "94%",
+    margin: "20px auto",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
     gap: "50px",
+    borderRadius: "10px",
   },
   topSection: {
     marginBottom: theme.spacing(4),
@@ -75,13 +75,23 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    margin: "50px",
   },
   copyright: {
     color: "#8B8B8B",
     fontSize: "14px",
-    margin: "10px 65px",
+    margin: "10px 0px",
   },
-
+  "@media (max-width: 1100px)": { 
+    footer: {
+      flexDirection: "column", 
+      alignItems: "center",
+      textAlign: "center",
+      gap: "20px", 
+      wordWrap: "break-word", 
+      wordBreak: "break-word",
+    },
+  },
 }));
 
 const Footer = () => {

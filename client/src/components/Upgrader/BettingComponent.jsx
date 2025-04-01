@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core';
 import { LineChart, Line, XAxis, ResponsiveContainer } from 'recharts';
 import ClearIcon from '@material-ui/icons/Clear';
+import bettingMenuFrame from '../../assets/betting-menu-frame.png';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,18 +28,32 @@ const useStyles = makeStyles((theme) => ({
     },
     tabsContainer: {
         '& .MuiTabs-indicator': {
-            backgroundColor: '#9C27B0',
+            backgroundColor: 'transparent',
+            width:"100%",
         },
     },
     tab: {
         backgroundColor: '#2A2A3A',
-        borderRadius: '8px 8px 0 0',
-        minWidth: 120,
+        width: "50% !important", 
         '&.Mui-selected': {
-            backgroundColor: '#3A2A4A',
-            color: 'white',
+          backgroundImage: `url(${bettingMenuFrame})`,
+          backgroundPosition: 'center',
+          color: 'white',
+          width: "50% !important", 
         },
-    },
+        '&:first-child': {
+          borderTopLeftRadius: '8px',
+          borderBottomLeftRadius: '8px',
+          borderTopRightRadius: '0',
+          borderBottomRightRadius: '0',
+        },
+        '&:last-child': {
+          borderTopLeftRadius: '0',
+          borderBottomLeftRadius: '0',
+          borderTopRightRadius: '8px',
+          borderBottomRightRadius: '8px',
+        },
+      },
     amountBox: {
         backgroundColor: 'transparent',
         padding: theme.spacing(1),
@@ -52,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         display: 'flex',
         border: '1px solid #333345',
+        justifyContent: 'space-between',
     },
     amountValue: {
         color: '#FFA500',
@@ -68,8 +84,11 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 8,
     },
     buttonContainer: {
+        marginTop: "-1px",
         display: 'flex',
         gap: 8,
+        justifyContent: 'flex-end',
+        flexGrow: 1,
     },
     button: {
         backgroundColor: '#2A2A3A',
@@ -223,25 +242,25 @@ const BettingComponent = () => {
 
     return (
         <Paper className={classes.root}>
-            <Grid container spacing={3}>
-                {/* Left side - Betting controls */}
-                <Grid item xs={12} md={4}>
-                    <Tabs
-                        value={tabValue}
-                        onChange={handleTabChange}
-                        className={classes.tabsContainer}
-                    >
-                        <Tab label="Manual" className={classes.tab} />
-                        <Tab label="Auto" className={classes.tab} />
-                    </Tabs>
+          <Grid container spacing={3} direction={{ xs: "column", lg: "row" }}>
+            {/* Left side - Betting controls */}
+            <Grid item xs={12} lg={4}>
+                <Tabs
+                    value={tabValue}
+                    onChange={handleTabChange}
+                    className={classes.tabsContainer}
+                    indicatorColor="transparent"
+                >
+                    <Tab label="Manual" className={classes.tab} />
+                    <Tab label="Auto" className={classes.tab} />
+                </Tabs>
 
-                    {/* Amount section */}
-                    <Box className={classes.amountBox}>
-                        <Typography variant="body2" style={{ color: "#7E7681" }}>Amount</Typography>
-                        <Box className={classes.amountInput} mt={1}>
-                            <div className={classes.currencyIcon}>₿</div>
-                            <Typography className={classes.amountValue} variant="h6">{amount}</Typography>
-                        </Box>
+                {/* Amount section */}
+                <Box className={classes.amountBox}>
+                    <Typography variant="body2" style={{ color: "#7E7681" }}>Amount</Typography>
+                    <Box className={classes.amountInput} mt={1}>
+                        <div className={classes.currencyIcon}>₿</div>
+                        <Typography className={classes.amountValue} variant="h6">{amount}</Typography>
                         <Box className={classes.buttonContainer} mt={1}>
                             <Button className={classes.button} variant="contained">1/2</Button>
                             <Button className={classes.button} variant="contained">2x</Button>
@@ -250,120 +269,121 @@ const BettingComponent = () => {
                             </Button>
                         </Box>
                     </Box>
+                </Box>
 
-                    {/* Cash Out At */}
-                    <Box className={classes.cashOutBox}>
-                        <Typography variant="body2" style={{ color: "#7E7681" }}>Cash Out At</Typography>
-                        <FormControl fullWidth margin="dense">
-                            <Select
-                                className={classes.select}
-                                value="x0.00"
-                                displayEmpty
-                                renderValue={() => "x0.00"}
-                            >
-                                <MenuItem value="x0.00">x0.00</MenuItem>
-                                <MenuItem value="x1.50">x1.50</MenuItem>
-                                <MenuItem value="x2.00">x2.00</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Box>
+                {/* Cash Out At */}
+                <Box className={classes.cashOutBox}>
+                    <Typography variant="body2" style={{ color: "#7E7681" }}>Cash Out At</Typography>
+                    <FormControl fullWidth margin="dense">
+                        <Select
+                            className={classes.select}
+                            value="x0.00"
+                            displayEmpty
+                            renderValue={() => "x0.00"}
+                        >
+                            <MenuItem value="x0.00">x0.00</MenuItem>
+                            <MenuItem value="x1.50">x1.50</MenuItem>
+                            <MenuItem value="x2.00">x2.00</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
 
-                    {/* Profit On Win */}
-                    <Box className={classes.cashOutBox}>
-                        <Typography variant="body2" style={{ color: "#7E7681" }}>Profit On Win</Typography>
-                        <FormControl fullWidth margin="dense">
-                            <Select
-                                className={classes.select}
-                                value="x0.00"
-                                displayEmpty
-                                renderValue={() => "x0.00"}
-                            >
-                                <MenuItem value="x0.00">x0.00</MenuItem>
-                                <MenuItem value="x1.50">x1.50</MenuItem>
-                                <MenuItem value="x2.00">x2.00</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Box>
+                {/* Profit On Win */}
+                <Box className={classes.cashOutBox}>
+                    <Typography variant="body2" style={{ color: "#7E7681" }}>Profit On Win</Typography>
+                    <FormControl fullWidth margin="dense">
+                        <Select
+                            className={classes.select}
+                            value="x0.00"
+                            displayEmpty
+                            renderValue={() => "x0.00"}
+                        >
+                            <MenuItem value="x0.00">x0.00</MenuItem>
+                            <MenuItem value="x1.50">x1.50</MenuItem>
+                            <MenuItem value="x2.00">x2.00</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
 
-                    {/* Play Now button */}
-                    <Button
-                        variant="contained"
-                        fullWidth
-                        className={classes.playNowButton}
-                    >
-                        Play Now
-                    </Button>
-                </Grid>
-
-                {/* Right side - Graph */}
-                <Grid item xs={12} md={8}>
-                    <Box className={classes.networkStatus}>
-                        <Typography variant="h6">Network Status</Typography>
-                        <div className={classes.networkDot}></div>
-                    </Box>
-
-                    <Box className={classes.chartContainer}>
-                        {/* Multiplier values on the side */}
-                        <Box className={classes.multiplierSideLabels}>
-                            {[...Array(8)].map((_, index) => (
-                                <Typography key={index} className={classes.multiplierSideLabel}>
-                                    2.6X
-                                </Typography>
-                            ))}
-                        </Box>
-
-                        {/* Current payout box */}
-                        <Box className={classes.multiplierBox}>
-                            <Typography className={classes.multiplierValue}>2.6X</Typography>
-                            <Typography className={classes.multiplierLabel}>Current Payout</Typography>
-                        </Box>
-
-                        {/* Bettors info */}
-                        {bettors.map((bettor, index) => (
-                            <Box
-                                key={index}
-                                className={classes.betterInfo}
-                                style={{
-                                    top: `${35 + (index * 15)}%`,
-                                    right: `${15 + (index * 5)}%`,
-                                }}
-                            >
-                                <div className={classes.avatar}></div>
-                                <Typography variant="body2">{bettor.name} {bettor.amount}</Typography>
-                            </Box>
-                        ))}
-
-                        {/* Chart */}
-                        <ResponsiveContainer width="100%" height="100%">
-                            <LineChart data={chartData}>
-                                <Line
-                                    type="monotone"
-                                    dataKey="value"
-                                    stroke="#9C27B0"
-                                    strokeWidth={3}
-                                    dot={false}
-                                />
-                                <XAxis
-                                    dataKey="time"
-                                    hide={true}
-                                />
-                            </LineChart>
-                        </ResponsiveContainer>
-                    </Box>
-
-                    {/* Time markers */}
-                    <Box className={classes.timeMarkers}>
-                        {['1s', '3s', '6s', '9s', '12s', '15s', '18s'].map((time, index) => (
-                            <Box
-                                key={index}
-                                className={`${classes.timeMarker} ${time === '15s' ? 'active' : ''}`}
-                            >
-                                {time}
-                            </Box>
-                        ))}
-                    </Box>
-                </Grid>
+                {/* Play Now button */}
+                <Button
+                    variant="contained"
+                    fullWidth
+                    className={classes.playNowButton}
+                >
+                    Play Now
+                </Button>
             </Grid>
+
+            {/* Right side - Graph */}
+            <Grid item xs={12} lg={8}>
+                <Box className={classes.networkStatus}>
+                    <Typography variant="h6">Network Status</Typography>
+                    <div className={classes.networkDot}></div>
+                </Box>
+
+                <Box className={classes.chartContainer}>
+                    {/* Multiplier values on the side */}
+                    <Box className={classes.multiplierSideLabels}>
+                        {[...Array(8)].map((_, index) => (
+                            <Typography key={index} className={classes.multiplierSideLabel}>
+                                2.6X
+                            </Typography>
+                        ))}
+                    </Box>
+
+                    {/* Current payout box */}
+                    <Box className={classes.multiplierBox}>
+                        <Typography className={classes.multiplierValue}>2.6X</Typography>
+                        <Typography className={classes.multiplierLabel}>Current Payout</Typography>
+                    </Box>
+
+                    {/* Bettors info */}
+                    {bettors.map((bettor, index) => (
+                        <Box
+                            key={index}
+                            className={classes.betterInfo}
+                            style={{
+                                top: `${35 + (index * 15)}%`,
+                                right: `${15 + (index * 5)}%`,
+                            }}
+                        >
+                            <div className={classes.avatar}></div>
+                            <Typography variant="body2">{bettor.name} {bettor.amount}</Typography>
+                        </Box>
+                    ))}
+
+                    {/* Chart */}
+                    <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={chartData}>
+                            <Line
+                                type="monotone"
+                                dataKey="value"
+                                stroke="#9C27B0"
+                                strokeWidth={3}
+                                dot={false}
+                            />
+                            <XAxis
+                                dataKey="time"
+                                hide={true}
+                            />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </Box>
+
+                {/* Time markers */}
+                <Box className={classes.timeMarkers}>
+                    {['1s', '3s', '6s', '9s', '12s', '15s', '18s'].map((time, index) => (
+                        <Box
+                            key={index}
+                            className={`${classes.timeMarker} ${time === '15s' ? 'active' : ''}`}
+                        >
+                            {time}
+                        </Box>
+                    ))}
+                </Box>
+            </Grid>
+          </Grid>
         </Paper>
     );
 };

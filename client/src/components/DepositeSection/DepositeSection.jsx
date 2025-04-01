@@ -13,6 +13,7 @@ import xrp from "../../assets/Rustreels/Branding/depositeIcons/07.png";
 import apecoin from "../../assets/Rustreels/Branding/depositeIcons/08.png";
 import solana from "../../assets/Rustreels/Branding/depositeIcons/09.png";
 import tron from "../../assets/Rustreels/Branding/depositeIcons/10.png";
+import depositLeftLine from "../../assets/leftDepositLine.png";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -62,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
         color: "#a100ff",
         fontWeight: 500,
         fontSize: "1.2rem",
+        margin: "0px 25px",
     },
     slash: {
         fontSize: "1.5rem",
@@ -93,6 +95,31 @@ const useStyles = makeStyles((theme) => ({
             filter: "grayscale(0%)",
         },
     },
+    depositLeftLine: {
+        height:"1rem",
+        objectFit: 'contain' 
+    },
+    depositRightLine:{
+        transform: 'scaleX(-1)', /* Example for flipping */
+        height: '1rem', /* Fixed height */
+        objectFit: 'contain' 
+    },
+    "@media (max-width: 1520px)": { 
+        depositLeftLine:{
+            height:"0.5rem",
+        },
+        depositRightLine:{
+            height:"0.5rem",
+        },
+    },
+    "@media (max-width: 900px)": { 
+        depositLeftLine:{
+            height:"0.2rem",
+        },
+        depositRightLine:{
+            height:"0.2rem",
+        },
+    }
 }));
 
 const DepositSection = () => {
@@ -114,17 +141,12 @@ const DepositSection = () => {
     return (
         <Box className={classes.root}>
             <Box className={classes.titleContainer}>
-                <div className={classes.line}>
-                    <div className={classes.angledEdgeLeft}></div>
-                </div>
+                <img src={depositLeftLine} alt="deposit left Line not found" className={classes.depositLeftLine}/>
+              
                 <div className={classes.titleWrapper}>
-                    <span className={classes.slash}>/</span>
                     <Typography className={classes.title}>Deposit with your Favorite Methods</Typography>
-                    <span className={classes.rightSlash}>\</span>
                 </div>
-                <div className={classes.line}>
-                    <div className={classes.angledEdgeRight}></div>
-                </div>
+                <img src={depositLeftLine} alt="deposit left Line not found" className={classes.depositRightLine} />
             </Box>
             <Box className={classes.iconContainer}>
                 {icons.map((icon, index) => (

@@ -4,19 +4,27 @@ import Leftbar from "../NewHome/Leftbar/Leftbar";
 import Topbar from "../NewHome/Header/Topbar";
 import Footer from "../NewHome/Footer/Footer";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "#0B050D",
     color: "#fff",
     minHeight: "100vh",
     width: "100%",
     display: "flex",
     flexDirection: "row",
+    overflow: "hidden",
   },
   mainSection: {
-    width: "90%",
+    backgroundColor: "#0B050D",
+    flexGrow: 1, 
+    minHeight: "100vh",
+    transition: "width 0.3s ease-in-out",
+
+    [theme.breakpoints.down("xs")]: {
+      width: "100%", 
+    },
   },
 }));
+
 
 const MainLayout = ({ children, onClick }) => {
   const classes = useStyles();

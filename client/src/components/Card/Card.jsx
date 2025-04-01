@@ -5,8 +5,7 @@ import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   cardContainer: {
-    width: "330px",
-    height: "390px",
+    height: "370px",
     background: "linear-gradient(145deg, #2a1429 0%, #1a0c1a 100%)",
     borderRadius: "16px",
     position: "relative",
@@ -37,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     color: "#FFDF00",
     padding: "2px 8px",
     borderRadius: "4px",
-    fontSize: "12px",
+    fontSize: "16px",
   },
   hotTag: {
     position: "absolute",
@@ -48,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     color: "#F50169",
     padding: "2px 8px",
     borderRadius: "4px",
-    fontSize: "12px",
+    fontSize: "16px",
   },
   imageContainer: {
     position: "relative",

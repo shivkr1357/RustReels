@@ -2,7 +2,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Box, Typography } from "@material-ui/core";
 import ChatIcon from "@material-ui/icons/Chat";
 import loginIcon from "../../../assets/Rustreels/Branding/icons/loginIcon.png";
-
+import gameIcon from "../../../assets/gameIcon.png";
+import arrowLeft from "../../../assets/arrow_left.png";
 const useStyles = makeStyles(theme => ({
   wrapper: {
     width: "100%",
@@ -20,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     gap: "30px",
+    flexWrap: "wrap",
   },
   topbarRight: {
     display: "flex",
@@ -42,18 +44,22 @@ const useStyles = makeStyles(theme => ({
     },
   },
   gamesNavItem: {
-    marginLeft: "50px",
+    marginLeft: "70px",
     background:
       "linear-gradient(to right, #872B6E 0%, #532548 49%, #1E101D 100%)",
     color: "white",
   },
-  gamesIcon: {
-    fontSize: 18,
-    color: "white",
+  gameIcon: {
+    height: "1rem",
+  },
+  arrowLeft: {
+    height: "1rem",
   },
   dot: {
-    color: "#872b6e",
-    marginLeft: "4px",
+    color: "#FE49FF",
+    marginLeft: "-4px",
+    marginTop:"-2px",
+    fontSize: "3.5rem",
   },
   loginImage: {
     width: "114px",
@@ -61,6 +67,23 @@ const useStyles = makeStyles(theme => ({
     marginRight: "20px",
     cursor: "pointer",
   },
+  "@media (max-width: 1100px)": { // Adjust the breakpoint as needed
+  topbar: {
+    flexDirection: "column", // Stack items vertically
+    height: "auto", // Allow height to adjust dynamically
+    textAlign: "center",
+    gap: "10px", // Reduce gap for better spacing
+  },
+  topbarLeft: {
+    justifyContent: "center", // Center items for better UI
+    width: "100%",
+  },
+  topbarRight: {
+    justifyContent: "center", // Center items for better UI
+    width: "100%",
+    marginRight: "0px", // Remove right margin for full-width alignment
+  },
+},
 }));
 
 const Topbar = ({ onClick }) => {
@@ -71,8 +94,10 @@ const Topbar = ({ onClick }) => {
       <Box className={classes.topbar}>
         <Box className={classes.topbarLeft}>
           <Box className={`${classes.navItem} ${classes.gamesNavItem}`}>
-            <ChatIcon className={classes.gamesIcon} />
+            {/* <ChatIcon className={classes.gamesIcon} /> */}
+             <img src={gameIcon} className={classes.gameIcon} alt="game icon not found" />
             <Typography variant="body2">Games</Typography>
+            <img src={arrowLeft} className={classes.arrowLeft} alt="arrow icon not found" />
           </Box>
 
           <Box className={classes.navItem}>
@@ -84,7 +109,7 @@ const Topbar = ({ onClick }) => {
           </Box>
 
           <Box className={classes.navItem}>
-            <Typography variant="body2">Rewards</Typography>
+            <Typography variant="body2" style={{color:"#FE49FF"}}>Rewards</Typography>
             <span className={classes.dot}>•</span>
           </Box>
 

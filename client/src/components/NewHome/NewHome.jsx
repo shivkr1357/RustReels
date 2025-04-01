@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    marginLeft: "80px",
+    marginLeft: "70px",
     marginTop: "30px",
   },
   image: {
@@ -52,12 +52,16 @@ const useStyles = makeStyles(theme => ({
     color: "#918D93",
   },
   cardContainer: {
+    width: "97%",
+    rowGap: "30px",
+    columnGap: "30px",
+    padding: "0px 0px 0px 65px",
     display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    gap: "20px",
-    padding: "0 80px",
+    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+    marginBottom: "20px",
     marginTop: "20px",
   },
+  
   tableContainer: {
     display: "flex",
     flexDirection: "row",

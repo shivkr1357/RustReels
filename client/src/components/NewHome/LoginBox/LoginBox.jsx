@@ -5,36 +5,46 @@ import logo1 from "../../../assets/Rustreels/Branding/icons/loginBoxImage1.png";
 
 const useStyles = makeStyles(theme => ({
   containerTop: {
+    width: "100%",
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    padding: "0px 70px",
+    padding: "0px 44px 0px 69px",
     marginTop: "30px",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
   },
   leftContainer: {
-
+    width: "67%",
     backgroundImage: `url(${logo})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    width: "755px",
     height: "288px",
+    borderRadius: "10px",
   },
   container: {
-
+    width: "30%",
     backgroundImage: `url(${logo1})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    width: "385px",
+    width: "30%",
     height: "288px",
+    borderRadius: "10px",
   },
   textContainer: {
     display: "flex",
     flexDirection: "column",
-    width: "380px",
+    width: "100%", // Make it flexible, so it adjusts based on screen size
+    maxWidth: "380px", // Max width ensures it doesn't grow too wide
     padding: "20px",
     marginLeft: "20px",
+    boxSizing: "border-box", // Ensures padding doesn't affect the width
+
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "10px", // Adjust margin on smaller screens
+      padding: "10px", // Reduce padding for better responsiveness
+    },
   },
   textContainer1: {
     display: "flex",
@@ -98,6 +108,20 @@ const useStyles = makeStyles(theme => ({
       "&:before": {
         opacity: 0.8,
       },
+    },
+  },
+  "@media (max-width: 1100px)": { 
+    containerTop: {
+      flexDirection: "column", 
+      alignItems: "center",
+    },
+    leftContainer: {
+      width: "100%", 
+      height: "auto",
+    },
+    container: {
+      width: "100%",
+      marginTop: "20px", 
     },
   },
 }));

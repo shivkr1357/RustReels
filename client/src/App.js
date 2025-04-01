@@ -311,7 +311,6 @@ const App = () => {
           <Route exact path="/crash" component={CrashNew} />
           <Route exact path="/case-battles" component={CaseBattles} />
 
-
           <ToastProvider
             placement={"bottom-center"}
             autoDismiss={true}
@@ -332,14 +331,8 @@ const App = () => {
               </Drawer>
               <Navbar mobileChat={mobileChat} setMobile={setMobile} mobileNav={mobileNav} setMobileNav={setMobileNav} />
               <main className={classes.content}>
-
                 <Box height="5.6rem" />
-
-
                 <Redirect exact from="/" to="home" />
-
-
-
                 <Route
                   exact
                   path="/coinflip/private/:inviteCode"
