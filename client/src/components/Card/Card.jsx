@@ -93,7 +93,7 @@ const Card = ({ image, title, isNew, isHot }) => {
   const history = useHistory();
   const classes = useStyles();
 
-  const handleCardClick = (title) => {
+  const handleCardClick = title => {
     switch (title) {
       case "UPGRADER":
         history.push(`/upgrader`);
@@ -102,24 +102,34 @@ const Card = ({ image, title, isNew, isHot }) => {
         history.push(`/crash`);
         break;
       case "BLACKJACK":
-        history.push(`/blackjack`);
+        history.push(`/blackjack-new`);
         break;
       case "ROULETTE":
-        history.push(`/roulette`);
-        break;
-      case "DICE":
-        history.push(`/dice`);
+        history.push(`/roulette-new`);
         break;
       case "CASE BATTLES":
         history.push(`/case-battles`);
         break;
+      case "CASE OPENING":
+        history.push(`/case-opening-new`);
+        break;
+      case "COINFLIP":
+        history.push(`/coinflip-new`);
+        break;
+      case "JACKPOT":
+        history.push(`/jackpot-new`);
+        break;
+
       default:
         break;
     }
   };
 
   return (
-    <Box className={classes.cardContainer} onClick={() => handleCardClick(title)}>
+    <Box
+      className={classes.cardContainer}
+      onClick={() => handleCardClick(title)}
+    >
       <Box className={classes.topSection}>
         {/* <CasinoIcon /> */}
         <img src={CardIcon} alt="card Icon not found" className={classes.cardIcon} />
