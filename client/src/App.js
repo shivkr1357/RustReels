@@ -63,6 +63,11 @@ import NewHome from "./components/NewHome/NewHome.jsx";
 import Upgrader from "./components/Upgrader/Upgrader.jsx";
 import CrashNew from "./components/CrashNew/CrashNew.jsx";
 import CaseBattles from "./components/CaseBattles/CaseBattles.jsx";
+import RouletteNew from "./components/RouletteNew/RouletteNew.jsx";
+import BlackJackNew from "./components/BlackJackNew/BlackJackNew.jsx";
+import CaseOpeningNew from "./components/CaseOpeningNew/CaseOpeningNew.jsx";
+import CoinFlipNew from "./components/CoinFlipNew/CoinFlipNew.jsx";
+import JackpotNew from "./components/JackpotNew/JackpotNew.jsx";
 
 // Styles
 const useStyles = makeStyles(theme => ({
@@ -244,7 +249,6 @@ const App = () => {
   const [mobileNav, setMobileNav] = useState(false);
   const [finalCountdown, setFinalCountdown] = useState(0);
 
-
   // Site settings
   const [loading, setLoading] = useState(true);
   const [maintenance, setMaintenance] = useState(false);
@@ -259,7 +263,11 @@ const App = () => {
       let int = setInterval(() => {
         secunde -= 1;
         setFinalCountdown(secunde);
-        if (secunde <= 0) { clearInterval(int); setFinalCountdown(""); resolve(); }
+        if (secunde <= 0) {
+          clearInterval(int);
+          setFinalCountdown("");
+          resolve();
+        }
       }, 1300);
     });
     try {
@@ -286,7 +294,8 @@ const App = () => {
   // componentDidMount
   useEffect(() => {
     const buildId = metadata.build;
-    const buildNumber = buildId.split("@").length > 1 ? buildId.split("@")[1] : "Unknown";
+    const buildNumber =
+      buildId.split("@").length > 1 ? buildId.split("@")[1] : "Unknown";
     console.warn(
       `%cStop!\n%cThis is a browser feature intended only for developers. If someone told you to copy and paste something here to get a "new feature" or "hack" someone's account, it is a scam and will give them access to your account.\r%c[BUILD] Current build number: ${buildNumber}`,
       "font-weight: bold; font-size: 35px; color: red;",
@@ -310,6 +319,11 @@ const App = () => {
           <Route exact path="/upgrader" component={Upgrader} />
           <Route exact path="/crash" component={CrashNew} />
           <Route exact path="/case-battles" component={CaseBattles} />
+          <Route exact path="/roulette-new" component={RouletteNew} />
+          <Route exact path="/blackjack-new" component={BlackJackNew} />
+          <Route exact path="/case-opening-new" component={CaseOpeningNew} />
+          <Route exact path="/coinflip-new" component={CoinFlipNew} />
+          <Route exact path="/jackpot-new" component={JackpotNew} />
 
           <ToastProvider
             placement={"bottom-center"}
@@ -323,13 +337,20 @@ const App = () => {
               <Drawer
                 variant="permanent"
                 classes={{
-                  paper: mobileNav ? classes.mobileDrawer1 : classes.drawerPaper1,
+                  paper: mobileNav
+                    ? classes.mobileDrawer1
+                    : classes.drawerPaper1,
                 }}
                 open={open}
               >
                 <HeaderNav />
               </Drawer>
-              <Navbar mobileChat={mobileChat} setMobile={setMobile} mobileNav={mobileNav} setMobileNav={setMobileNav} />
+              <Navbar
+                mobileChat={mobileChat}
+                setMobile={setMobile}
+                mobileNav={mobileNav}
+                setMobileNav={setMobileNav}
+              />
               <main className={classes.content}>
                 <Box height="5.6rem" />
                 <Redirect exact from="/" to="home" />
@@ -339,7 +360,6 @@ const App = () => {
                   component={Coinflip}
                 />
                 <Route exact path="/jackpot" component={Jackpot} />
-
                 <Route path="/home" component={Home} />
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/affiliates" component={Affiliates} />
@@ -355,28 +375,37 @@ const App = () => {
                 <Route exact path="/history" component={History} />
                 <Route exact path="/registration" component={Registration} />
                 <Route exact path="/coinflip" component={CoinflipGames} />
-                <Route exact path="/coinflip_history" component={CoinflipHistory} />
-
+                <Route
+                  exact
+                  path="/coinflip_history"
+                  component={CoinflipHistory}
+                />
                 <Route exact path="/battles/create" component={CreateBattle} />
-                <Route path="/battles/:battleId" render={(props) => <BattlePage key={props.match.params.battleId} {...props} />} />
+                <Route
+                  path="/battles/:battleId"
+                  render={props => (
+                    <BattlePage key={props.match.params.battleId} {...props} />
+                  )}
+                />
                 <Route exact path="/battles" component={Battles} />
                 <Route
                   exact
                   path="/a/:affiliateCode"
                   component={AffiliatesRedirect}
                 />
-
                 <Route exact path="/login/:provider?" component={Login} />
-
                 {/* <Route exact path="*" component={NotFound} /> */}
-                <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+                <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />{" "}
+                <br /> <br />
                 <Footer />
               </main>
               <Drawer
                 anchor="bottom"
                 variant="permanent"
                 classes={{
-                  paper: mobileChat ? classes.mobileDrawer2 : classes.drawerPaper2,
+                  paper: mobileChat
+                    ? classes.mobileDrawer2
+                    : classes.drawerPaper2,
                 }}
                 open={open}
               >
