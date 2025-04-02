@@ -59,10 +59,19 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2),
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'space-between', // Ensures equal spacing
         width: '100%',
         height: 150,
-        marginTop: 20
+        marginTop: 20,
+        overflowX: 'hidden', // Default hidden to prevent unnecessary scroll
+        [theme.breakpoints.down(1600)]: {
+            overflowX: 'auto', // Enable horizontal scrolling for smaller screens
+            whiteSpace: 'nowrap', // Prevents content from wrapping
+        },
+        
     },
+    
+    
     openPanel: {
         backgroundColor: '#231A32',
         borderRadius: 10,
@@ -71,10 +80,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        // justifyContent: 'space-around',
         margin: '10px 10px',
-
-        // gap: 10
     },
     crossIcon: {
         color: '#FFFF00',
@@ -121,6 +127,7 @@ const useStyles = makeStyles((theme) => ({
         padding: 10,
         justifyContent: 'space-between',
         alignItems: 'center',
+        width:"100%"
     },
     cardItem: {
         width: 70,

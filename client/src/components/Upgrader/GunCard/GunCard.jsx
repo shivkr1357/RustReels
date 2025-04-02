@@ -63,6 +63,12 @@ const useStyles = makeStyles(() => ({
         textAlign: "center",
         marginTop: "8px",
     },
+    "@media (max-width: 945px)": { 
+        card :{
+            width:"100%",
+            maxWidth:"100%",
+        }
+    },
 }));
 
 const GunCard = () => {

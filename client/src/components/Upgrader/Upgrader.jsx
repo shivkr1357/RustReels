@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'row',
         justifyContent: 'space-between',
         flexWrap: 'wrap',
-        margin: '80px 20px',
+        margin: '10px 40px 10px 0px',
         marginLeft: '80px',
     },
     filterContainer: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        margin: '20px',
+        margin: '20px 40px 20px 50px',
     },
     searchContainer: {
         display: 'flex',

@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     alignItems: "center",
     height: "40px",
-    width: "196px",
+    width: "auto",
     padding: "0 10px",
     borderRadius: "5px",
     background:

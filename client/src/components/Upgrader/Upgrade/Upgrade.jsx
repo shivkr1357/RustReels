@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button, Slider, TextField, Typography, Grid, Card, Box } from '@material-ui/core';
 import upgradeBackground from '../../../assets/Rustreels/Branding/BackgroundImagers/upgraderbackground.png';
 import gunImage from '../../../assets/Rustreels/Branding/guns/gun1.png';
-
+import ClearIcon from '@material-ui/icons/Clear';
+import AmountIcon from '../../../assets/amount-icon.png';
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -12,11 +13,12 @@ const useStyles = makeStyles((theme) => ({
         color: '#FDF8FF',
         borderRadius: 10,
         border: "1px solid #211A20",
-        margin: "30px 80px",
+        margin: "20px 40px 20px 70px",
         backgroundImage: `url(${upgradeBackground})`,
+        flexDirection:"row",
     },
     leftSection: {
-        width: '30%',
+        width: '35%',
         padding: theme.spacing(3),
         // padding: "20px",
         background: '#1B141B',
@@ -51,8 +53,10 @@ const useStyles = makeStyles((theme) => ({
     },
     buttonGroup: {
         display: 'flex',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         marginTop: theme.spacing(2),
+        flexWrap: 'wrap',
+        gap: theme.spacing(2),
     },
     gunInfo: {
         display: 'flex',
@@ -82,13 +86,13 @@ const useStyles = makeStyles((theme) => ({
     rollUnderButton: {
         background: 'linear-gradient(90deg, #6C1855 0%, #431838 49%, #2F172E 100%)',
         color: '#FDF8FF',
-        textTransform: 'none',
-        padding: '10px 40px',
+        padding: '10px 50px',
     },
     rollOverButton: {
         background: 'linear-gradient(90deg, #4A3D4A 0%, #3B2F38 49%, #231D22 100%)',
         color: '#FDF8FF',
         fontWeight: 'bold',
+        padding: '10px 50px',
     },
     textField: {
         '& .MuiInputBase-input': {
@@ -114,11 +118,11 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         gap: "10px",
         color: '#FDF8FF',
         margin: "20px 0",
-
+        flexWrap: 'wrap',
     },
     upgradeText: {
         color: '#FDF8FF',
@@ -143,8 +147,64 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        // gap: "10px",
-    }
+    },
+    amountBox: {
+        backgroundColor: 'transparent',
+        padding: theme.spacing(1),
+        borderRadius: 8,
+        marginTop: theme.spacing(2),
+    },
+    amountInput: {
+        background: 'linear-gradient(to right, #531542 0%, #32162B 49%, #241723 100%)',
+        borderRadius: 10,
+        padding: '8px',
+        alignItems: 'center',
+        display: 'flex',
+        border: '1px solid #333345',
+        justifyContent: 'space-between',
+    },
+    currencyIcon: {
+        height: "50px",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    amountValue: {
+        color: '#FFA500',
+        fontWeight: 'bold',
+    },
+    buttonContainerBox: {
+        marginTop: "-1px",
+        display: 'flex',
+        gap: 8,
+        justifyContent: 'flex-end',
+        flexGrow: 1,
+    },
+    button: {
+        backgroundColor: '#2A2A3A',
+        borderRadius: 4,
+        color: 'white',
+        minWidth: 60,
+        '&:hover': {
+            backgroundColor: '#3A3A4A',
+        },
+    },
+    "@media (max-width: 1100px)": { 
+        root:{
+            flexDirection: "column",
+            width:"80%",
+            gap: "2rem",
+        },
+        leftSection :{
+            width:"100%"
+        },
+        middleSection: {
+            width:"100%",
+        },
+        rightSection: {
+            width:"100%",
+        },
+    },
 }));
 
 const UpgradeComponent = () => {
@@ -155,13 +215,24 @@ const UpgradeComponent = () => {
             {/* Left Section */}
             <Card className={classes.leftSection}>
                 <Typography variant="h6" style={{ color: '#67637B' }}>Amount</Typography>
-                <TextField
+                {/* <TextField
                     variant="outlined"
                     fullWidth
                     value={1000}
                     className={classes.textField}
                     placeholder="Enter amount"
-                />
+                /> */}
+                <Box className={classes.amountInput} mt={1}>
+                        <img src={AmountIcon} className={classes.currencyIcon} alt="Amount Icon not found" />
+                        <Typography className={classes.amountValue} variant="h6">{1000}</Typography>
+                        <Box className={classes.buttonContainerBox} mt={1}>
+                            <Button className={classes.button} variant="contained">1/2</Button>
+                            <Button className={classes.button} variant="contained">2x</Button>
+                            <Button className={classes.button} variant="contained">
+                                <ClearIcon fontSize="small" /> Clear
+                            </Button>
+                        </Box>
+                </Box>
                 <Slider className={classes.slider} />
                 <Typography variant="h6" style={{ marginTop: '20px', color: '#67637B' }}>Multiplier</Typography>
                 <TextField

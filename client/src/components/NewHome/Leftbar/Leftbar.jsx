@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     flex: "0 0 15vw",
     height: "100vh",
     backgroundColor: "#1a1a1a",
-    position: "sticky",
+    position: "fixed",
     top: 0,
     zIndex: 1000,
     transition: "width 0.3s ease-in-out",
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
   userList: {
     flex: 1,
-    overflowY: "auto",
+    overflowY: "scroll",
     padding: "10px 0",
     maxHeight: "calc(100vh - 200px)",
   },

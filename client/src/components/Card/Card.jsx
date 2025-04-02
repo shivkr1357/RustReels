@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import CasinoIcon from "@material-ui/icons/Casino";
 import { useHistory } from "react-router-dom";
-
+import CardIcon from "../../assets/cardIcon.png";
 const useStyles = makeStyles(theme => ({
   cardContainer: {
     height: "370px",
@@ -67,6 +67,9 @@ const useStyles = makeStyles(theme => ({
       pointerEvents: "none",
     },
   },
+  cardIcon:{
+    height: "30px"
+  },
   image: {
     width: "200px",
     height: "200px",
@@ -118,7 +121,8 @@ const Card = ({ image, title, isNew, isHot }) => {
   return (
     <Box className={classes.cardContainer} onClick={() => handleCardClick(title)}>
       <Box className={classes.topSection}>
-        <CasinoIcon />
+        {/* <CasinoIcon /> */}
+        <img src={CardIcon} alt="card Icon not found" className={classes.cardIcon} />
       </Box>
 
       {isNew && <Box className={classes.newTag}>NEW</Box>}

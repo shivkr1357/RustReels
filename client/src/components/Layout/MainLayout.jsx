@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     color: "#fff",
     minHeight: "100vh",
-    width: "100%",
+    width: "100vw",
     display: "flex",
     flexDirection: "row",
     overflow: "hidden",
@@ -18,9 +18,11 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1, 
     minHeight: "100vh",
     transition: "width 0.3s ease-in-out",
-
-    [theme.breakpoints.down("xs")]: {
-      width: "100%", 
+    width: "85vw",
+    marginLeft:"15vw",
+    [theme.breakpoints.down("md")]: {
+      width: "70vw",
+      
     },
   },
 }));
