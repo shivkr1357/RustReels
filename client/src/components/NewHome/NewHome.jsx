@@ -21,6 +21,7 @@ import jackpot from "../../assets/Rustreels/Branding/gameIcon/jackpot.png";
 import { HomeTableData } from "./data/dummyData";
 import CustomTable from "../CustomTable/CustomTable";
 import LoginModal from "../LoginModal/LoginModal";
+import { withRouter } from "react-router-dom";
 
 
 const useStyles = makeStyles(theme => ({
@@ -61,7 +62,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "20px",
     marginTop: "20px",
   },
-  
+
   tableContainer: {
     display: "flex",
     flexDirection: "row",
@@ -132,4 +133,4 @@ const NewHome = () => {
   );
 };
 
-export default NewHome;
+export default withRouter(NewHome);

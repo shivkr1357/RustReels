@@ -18,7 +18,8 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import backgroundImage from '../../assets/Rustreels/Branding/login_image.png';
 import logo from '../../assets/Rustreels/Branding/Logo/logo.png';
-
+import { withRouter } from 'react-router-dom';
+import { NavLink as Link } from "react-router-dom";
 // You'll need to import or create icons for Discord, Passkey, Google, Twitter (X), Telegram, Discord, and WhatsApp
 // For this example, I'll use Material UI icons where possible and placeholders for others
 
@@ -361,12 +362,17 @@ const LoginModal = ({ open, onClose }) => {
                         </Button>
 
                         <div className={classes.socialLogin}>
-                            <Button className={classes.socialLoginButton}>
-                                <Box component="span" role="img" aria-label="google">G</Box>
-                            </Button>
-                            <Button className={classes.socialLoginButton}>
+                            <Link to="/login/google" className={classes.noLink}>
+                                <Button className={classes.google} variant="contained">
+                                    <i
+                                        style={{ marginRight: 5, fontSize: 15 }}
+                                        className="fab fa-google"
+                                    ></i>
+                                </Button>
+                            </Link>
+                            <Link to="/login/twitter" className={classes.socialLoginButton}>
                                 <Box component="span" role="img" aria-label="twitter">𝕏</Box>
-                            </Button>
+                            </Link>
                             <Button className={classes.socialLoginButton}>
                                 <Box component="span" role="img" aria-label="telegram">✈️</Box>
                             </Button>
@@ -384,4 +390,4 @@ const LoginModal = ({ open, onClose }) => {
     );
 };
 
-export default LoginModal;
+export default withRouter(LoginModal);

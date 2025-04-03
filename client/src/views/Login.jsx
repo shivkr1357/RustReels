@@ -78,6 +78,8 @@ const Login = ({
   const params = new URLSearchParams(location.search);
   const token = params.get("token");
 
+  console.log(match.params.provider, "++++++++++++");
+
   // componentDidMount
   useEffect(() => {
     // Exchange tokens

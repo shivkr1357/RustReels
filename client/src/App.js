@@ -324,6 +324,8 @@ const App = () => {
           <Route exact path="/case-opening-new" component={CaseOpeningNew} />
           <Route exact path="/coinflip-new" component={CoinFlipNew} />
           <Route exact path="/jackpot-new" component={JackpotNew} />
+          <Route exact path="/login/:provider?" component={Login} />
+          {/* <Route exact path="/login/google" component={Login} /> */}
 
           <ToastProvider
             placement={"bottom-center"}
