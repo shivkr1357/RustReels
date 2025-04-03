@@ -370,18 +370,15 @@ const LoginModal = ({ open, onClose }) => {
                                     ></i>
                                 </Button>
                             </Link>
-                            <Link to="/login/twitter" className={classes.socialLoginButton}>
-                                <Box component="span" role="img" aria-label="twitter">𝕏</Box>
+                            <Link to="/login/steam" className={classes.noLink}>
+                                <Button className={classes.steam} variant="contained">
+                                    <i
+                                        style={{ marginRight: 5, fontSize: 15 }}
+                                        className="fab fa-steam-symbol"
+                                    ></i>
+                                </Button>
                             </Link>
-                            <Button className={classes.socialLoginButton}>
-                                <Box component="span" role="img" aria-label="telegram">✈️</Box>
-                            </Button>
-                            <Button className={classes.socialLoginButton}>
-                                <Box component="span" role="img" aria-label="discord">👾</Box>
-                            </Button>
-                            <Button className={classes.socialLoginButton}>
-                                <Box component="span" role="img" aria-label="whatsapp">📱</Box>
-                            </Button>
+
                         </div>
                     </Grid>
                 </Grid>
