@@ -2,6 +2,7 @@ import { Box, Typography, Button, makeStyles } from "@material-ui/core";
 import React from "react";
 import logo from "../../../assets/Rustreels/Branding/icons/loginBoxImage.png";
 import logo1 from "../../../assets/Rustreels/Branding/icons/loginBoxImage1.png";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   containerTop: {
@@ -110,24 +111,28 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
-  "@media (max-width: 1100px)": { 
+  "@media (max-width: 1100px)": {
     containerTop: {
-      flexDirection: "column", 
+      flexDirection: "column",
       alignItems: "center",
     },
     leftContainer: {
-      width: "100%", 
+      width: "100%",
       height: "auto",
     },
     container: {
       width: "100%",
-      marginTop: "20px", 
+      marginTop: "20px",
     },
   },
 }));
 
 const LoginBox = ({ onClick, open }) => {
   const classes = useStyles();
+
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
+  console.log(isAuthenticated, "++++++++++++");
 
   return (
     <Box p={4} className={classes.containerTop}>
@@ -142,7 +147,7 @@ const LoginBox = ({ onClick, open }) => {
             and secure experience.
           </Typography>
 
-          <Button className={classes.loginButton} onClick={onClick}>Log In</Button>
+          <Button className={classes.loginButton} onClick={onClick}> {isAuthenticated ? "Log Out" : "Log In"}</Button>
         </Box>
       </Box>
       <Box className={classes.container}>

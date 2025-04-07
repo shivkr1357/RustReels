@@ -4,6 +4,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 import loginIcon from "../../../assets/Rustreels/Branding/icons/loginIcon.png";
 import gameIcon from "../../../assets/gameIcon.png";
 import arrowLeft from "../../../assets/arrow_left.png";
+import { useSelector } from "react-redux";
 const useStyles = makeStyles(theme => ({
   wrapper: {
     width: "100%",
@@ -58,7 +59,7 @@ const useStyles = makeStyles(theme => ({
   dot: {
     color: "#FE49FF",
     marginLeft: "-4px",
-    marginTop:"-2px",
+    marginTop: "-2px",
     fontSize: "3.5rem",
   },
   loginImage: {
@@ -68,25 +69,27 @@ const useStyles = makeStyles(theme => ({
     cursor: "pointer",
   },
   "@media (max-width: 1100px)": { // Adjust the breakpoint as needed
-  topbar: {
-    flexDirection: "column", // Stack items vertically
-    height: "auto", // Allow height to adjust dynamically
-    textAlign: "center",
-    gap: "10px", // Reduce gap for better spacing
+    topbar: {
+      flexDirection: "column", // Stack items vertically
+      height: "auto", // Allow height to adjust dynamically
+      textAlign: "center",
+      gap: "10px", // Reduce gap for better spacing
+    },
+    topbarLeft: {
+      justifyContent: "center", // Center items for better UI
+      width: "100%",
+    },
+    topbarRight: {
+      justifyContent: "center", // Center items for better UI
+      width: "100%",
+      marginRight: "0px", // Remove right margin for full-width alignment
+    },
   },
-  topbarLeft: {
-    justifyContent: "center", // Center items for better UI
-    width: "100%",
-  },
-  topbarRight: {
-    justifyContent: "center", // Center items for better UI
-    width: "100%",
-    marginRight: "0px", // Remove right margin for full-width alignment
-  },
-},
 }));
 
 const Topbar = ({ onClick }) => {
+
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const classes = useStyles();
 
   return (
@@ -95,7 +98,7 @@ const Topbar = ({ onClick }) => {
         <Box className={classes.topbarLeft}>
           <Box className={`${classes.navItem} ${classes.gamesNavItem}`}>
             {/* <ChatIcon className={classes.gamesIcon} /> */}
-             <img src={gameIcon} className={classes.gameIcon} alt="game icon not found" />
+            <img src={gameIcon} className={classes.gameIcon} alt="game icon not found" />
             <Typography variant="body2">Games</Typography>
             <img src={arrowLeft} className={classes.arrowLeft} alt="arrow icon not found" />
           </Box>
@@ -109,7 +112,7 @@ const Topbar = ({ onClick }) => {
           </Box>
 
           <Box className={classes.navItem}>
-            <Typography variant="body2" style={{color:"#FE49FF"}}>Rewards</Typography>
+            <Typography variant="body2" style={{ color: "#FE49FF" }}>Rewards</Typography>
             <span className={classes.dot}>•</span>
           </Box>
 
@@ -119,13 +122,16 @@ const Topbar = ({ onClick }) => {
         </Box>
 
         <Box className={classes.topbarRight}>
-          <Box
-            component="img"
-            onClick={onClick}
-            src={loginIcon}
-            alt="user"
-            className={classes.loginImage}
-          />
+          {isAuthenticated ? <Typography variant="body2">Log Out</Typography> : (
+
+            <Box
+              component="img"
+              onClick={onClick}
+              src={loginIcon}
+              alt="user"
+              className={classes.loginImage}
+            />
+          )}
         </Box>
       </Box>
     </Box>
