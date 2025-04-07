@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "5px",
     background:
       "linear-gradient(to bottom, #872b6e 0%, #532548 49%, #1e101d 100%)",
+    flexWrap: "wrap",
   },
   iconGroup: {
     display: "flex",

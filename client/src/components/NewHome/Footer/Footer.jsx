@@ -3,17 +3,21 @@ import { Box, Typography, makeStyles, Grid, Link } from "@material-ui/core";
 import logo from "../../../assets/Rustreels/Branding/Text/logo_new_home.png";
 
 const useStyles = makeStyles(theme => ({
-  footer: {
+  mainFooter:{
     backgroundColor: "#160E15",
-    padding: theme.spacing(4, 8),
+    width: "92%",
+    margin: "auto",
+    borderRadius: "10px",
+    padding:"40px"
+  },
+  footer: {
+    // padding: theme.spacing(0, 8),
     color: "#fff",
-    width: "94%",
-    margin: "20px auto",
+    margin: "0px auto",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
     gap: "50px",
-    borderRadius: "10px",
   },
   topSection: {
     marginBottom: theme.spacing(4),
@@ -75,7 +79,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    margin: "50px",
   },
   copyright: {
     color: "#8B8B8B",
@@ -90,6 +93,7 @@ const useStyles = makeStyles(theme => ({
       gap: "20px", 
       wordWrap: "break-word", 
       wordBreak: "break-word",
+      width:"auto"
     },
   },
 }));
@@ -99,6 +103,7 @@ const Footer = () => {
 
   return (
     <>
+    <Box className={classes.mainFooter}>
       <Box className={classes.footer}>
         <Box className={classes.topSection}>
           <img src={logo} alt="RustReels" className={classes.logo} />
@@ -194,11 +199,13 @@ const Footer = () => {
             </Link>
           </Grid>
         </Grid>
+        
       </Box>
       <Box className={classes.bottomSection}>
         <Typography className={classes.copyright}>
           ©2024 support@rustreels.com | All Rights Reserved
         </Typography>
+      </Box>
       </Box>
     </>
   );

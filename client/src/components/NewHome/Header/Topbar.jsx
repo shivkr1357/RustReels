@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     gap: "30px",
-    marginRight: "20px",
+    marginRight: "50px",
   },
   navItem: {
     display: "flex",

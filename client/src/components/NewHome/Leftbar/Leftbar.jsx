@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Typography, IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -13,122 +13,131 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     width: "15vw",
-    flex: "0 0 15vw",
     height: "100vh",
     backgroundColor: "#1a1a1a",
     position: "fixed",
     top: 0,
-    zIndex: 1000,
-    transition: "width 0.3s ease-in-out",
-
-    [theme.breakpoints.down("md")]: {
-      width: "20vw",
-      flex: "0 0 20vw",
+    left: 0,
+    zIndex: 1200,
+    transition: "transform 0.3s ease-in-out",
+    [theme.breakpoints.between("sm", "md")]: {
+      width: "10vw",
     },
     [theme.breakpoints.down("sm")]: {
-      width: "30vw",
-      flex: "0 0 30vw",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "70vw",
-      position: "fixed",
-      height: "100%",
-      left: "-100%",
-      transition: "left 0.3s ease-in-out",
+      width: "250px",
+      transform: "translateX(-100%)",
+      backgroundColor: "#0B050D",
+      borderRight: "1px solid rgba(255, 255, 255, 0.1)",
     },
   },
-  openSidebar: {
-    left: "0",
+  leftbarOpen: {
+    transform: "translateX(0)",
   },
   header: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "20px 0",
+    padding: "12px",
+    borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+    [theme.breakpoints.down("sm")]: {
+      padding: "8px 12px",
+      backgroundColor: "#1a1a1a",
+    },
   },
   headerImage: {
     width: "70px",
     height: "70px",
+    [theme.breakpoints.down("sm")]: {
+      width: "40px",
+      height: "40px",
+    },
   },
   userList: {
     flex: 1,
-    overflowY: "scroll",
+    overflowY: "auto",
     padding: "10px 0",
-    maxHeight: "calc(100vh - 200px)",
+    "&::-webkit-scrollbar": {
+      width: "4px",
+    },
+    "&::-webkit-scrollbar-track": {
+      background: "rgba(255, 255, 255, 0.05)",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: "rgba(255, 255, 255, 0.1)",
+      borderRadius: "2px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: "5px 0",
+    },
   },
   user: {
     display: "flex",
     alignItems: "center",
-    padding: "10px 15px",
+    padding: "8px 12px",
     cursor: "pointer",
+    transition: "background-color 0.2s ease",
     "&:hover": {
-      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      backgroundColor: "rgba(255, 255, 255, 0.05)",
     },
   },
   avatar: {
-    width: "40px",
-    height: "40px",
+    width: "32px",
+    height: "32px",
     borderRadius: "50%",
-    marginRight: "10px",
+    marginRight: "8px",
   },
   username: {
     color: "white",
-    fontSize: "14px",
+    fontSize: "13px",
     fontWeight: 500,
   },
   message: {
     color: "#a8a8a8",
-    fontSize: "12px",
+    fontSize: "11px",
     marginTop: "2px",
-  },
-  menuButton: {
-    position: "absolute",
-    top: "10px",
-    left: "10px",
-    color: "white",
-    zIndex: 1500,
-    display: "none",
-    [theme.breakpoints.down("xs")]: {
-      display: "block",
-    },
+    maxWidth: "150px",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   },
   closeButton: {
-    position: "absolute",
-    top: "10px",
-    right: "10px",
     color: "white",
-    zIndex: 1500,
+    padding: "4px",
     display: "none",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       display: "block",
+      "& svg": {
+        fontSize: "20px",
+      },
+    },
+  },
+  menuButton: {
+    position: "fixed",
+    top: "8px",
+    left: "8px",
+    color: "white",
+    zIndex: 1300,
+    padding: "20px",
+    display: "none",
+    [theme.breakpoints.down("sm")]: {
+      display: "block",
+      "& svg": {
+        fontSize: "24px",
+      },
     },
   },
 }));
 
-const Leftbar = () => {
+const Leftbar = ({ isOpen, onToggle }) => {
   const classes = useStyles();
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
-      {/* Menu Button for Mobile */}
-      <IconButton
-        className={classes.menuButton}
-        onClick={() => setSidebarOpen(true)}
-      >
+      <IconButton className={classes.menuButton} onClick={onToggle}>
         <MenuIcon />
       </IconButton>
 
-      {/* Sidebar */}
-      <Box className={`${classes.leftbar} ${isSidebarOpen ? classes.openSidebar : ""}`}>
-        {/* Close Button for Mobile */}
-        <IconButton
-          className={classes.closeButton}
-          onClick={() => setSidebarOpen(false)}
-        >
-          <CloseIcon />
-        </IconButton>
-
+      <Box className={`${classes.leftbar} ${isOpen ? classes.leftbarOpen : ""}`}>
         <Box className={classes.header}>
           <Box
             component="img"
@@ -136,6 +145,9 @@ const Leftbar = () => {
             alt="logo"
             className={classes.headerImage}
           />
+          <IconButton className={classes.closeButton} onClick={onToggle}>
+            <CloseIcon />
+          </IconButton>
         </Box>
 
         <LeftbarHeader />
