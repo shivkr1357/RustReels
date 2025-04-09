@@ -68,6 +68,9 @@ import BlackJackNew from "./components/BlackJackNew/BlackJackNew.jsx";
 import CaseOpeningNew from "./components/CaseOpeningNew/CaseOpeningNew.jsx";
 import CoinFlipNew from "./components/CoinFlipNew/CoinFlipNew.jsx";
 import JackpotNew from "./components/JackpotNew/JackpotNew.jsx";
+import EarnWithUs from "./components/EarnWithUs/EarnWithUs.jsx";
+import CreateCoinFlip from "./components/CreateCoinFlip/CreateCoinFlip.jsx";
+import Leaderboard from "./components/Leaderboard/Leaderboard.jsx";
 
 // Styles
 const useStyles = makeStyles(theme => ({
@@ -323,6 +326,9 @@ const App = () => {
           <Route exact path="/blackjack-new" component={BlackJackNew} />
           <Route exact path="/case-opening-new" component={CaseOpeningNew} />
           <Route exact path="/coinflip-new" component={CoinFlipNew} />
+          <Route exact path="/earn-with-us" component={EarnWithUs} />
+          <Route exact path="/leaderboard" component={Leaderboard} />
+          <Route exact path="/create-coinflip" component={CreateCoinFlip} />
           <Route exact path="/jackpot-new" component={JackpotNew} />
           <Route exact path="/login/:provider?" component={Login} />
           {/* <Route exact path="/login/google" component={Login} /> */}

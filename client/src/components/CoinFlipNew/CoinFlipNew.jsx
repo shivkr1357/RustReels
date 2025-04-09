@@ -2,23 +2,27 @@ import React from "react";
 import MainLayout from "../Layout/MainLayout";
 import { Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import logoWhite from "../../assets/logo-white.png";
-import orangeIcon from "../../assets/orange-icon.png";
+import SettingsIcon from '@material-ui/icons/Settings';
 import userIcon from "../../assets/user-icon.png";
 import CustomTable from "../CustomTable/CustomTable";
 import { HomeTableData } from "./data/dummyData";
-import frostbite from "../../assets/frostbite.png";
+import amountIcon from "../../assets/amount-icon.png";
+import createButtonImg from "../../assets/createButtonImg.png";
+import yellowBall from "../../assets/yellow-ball.png";
+import pinkBall from "../../assets/pink-ball.png";
+import { Link } from "react-router-dom";
+import leftUserIcon from "../../assets/leftUser.png";
+import rightUserIcon from "../../assets/rightUser.png";
 import hoodie from "../../assets/hoodie.png";
 import alienYellow from "../../assets/alien-yellow.png";
-import temperedMask from "../../assets/tempered-mask.png";
+import skullPurple from "../../assets/skull-purple.png";
 import superman from "../../assets/superman.png";
-import mainCircle from "../../assets/main-circle.png";
-import gubrail from "../../assets/gubrail.png";
-import gubrailIcon from "../../assets/gubrail-icon.png";
-import maxbell from "../../assets/maxbell.png";
-import maxbellIcon from "../../assets/maxbell-icon.png";
-import coinIcon from "../../assets/coin-icon.png";
-
+import blueJacket from "../../assets/blue-jacket.png";
+import frostbite from "../../assets/frostbite.png";
+import superman2 from "../../assets/superman2.png";
+import cross from "../../assets/cross.png";
+import skullIcon from "../../assets/skull-icon.png";
+import eyeFilled from "../../assets/eye-filled.png";
 const columns = [
   { id: "game", label: "Game" },
   { id: "player", label: "Player" },
@@ -30,361 +34,351 @@ const columns = [
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     position: "relative",
-    display: "flex",
     width: "100%",
     margin: "0 auto 20px",
     overflow: "hidden",
     borderRadius: "10px",
-    justifyContent: "center",
     padding: "20px",
     [theme.breakpoints.down('sm')]: {
       padding: "10px",
     }
   },
-  mainContainer: {
-    borderRadius: "30px",
-    backgroundColor: "#160D14",
-    border: "1px solid #211A20",
-    marginBottom: "30px",
-    padding: "30px 0",
-    margin: "10px 45px",
-    [theme.breakpoints.down('sm')]: {
-      margin: "10px",
-      padding: "20px 0",
+  header: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "20px",
+    borderRadius: "10px",
+    background: "#201520",
+    padding: "15px 20px",
+    "& p": {
+      fontSize: "16px",
+      color: "#fff",
+      margin: 0
+    }
+  },
+  centerContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    flex: 1,
+    "& p": {
+      fontSize: "12px",
+      color: "#fff",
+      margin: 0,
+      marginBottom: "4px"
+    }
+  },
+  activeGames: {
+    color: "#E41AFA",
+    fontSize: "12px"
+  },
+  createButton: {
+    background: "#160C0E",
+    border: "1px solid #50410A",
+    borderRadius: "8px",
+    padding: "8px 16px",
+    color: "#fff",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    cursor: "pointer",
+    "& img": {
+      width: "20px",
+      height: "20px"
+    }
+  },
+  navItem: {
+    fontSize: "12px",
+    color: "#fff",
+    margin: 0,
+    textDecoration: "none"
+  },
+  recentFlipsContainer: {
+    display: "flex",
+    width: "100%",
+    gap: "15px",
+    marginBottom: "20px"
+  },
+  recentFlipsHeader: {
+    color: "#fff",
+    fontSize: "14px",
+    whiteSpace: "nowrap",
+  },
+  coinStripContainer: {
+    position: "relative",
+    flex: 1,
+    overflow: "hidden",
+    "&::before, &::after": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      bottom: 0,
+      width: "60px",
+      zIndex: 1
+    },
+    "&::before": {
+      left: 0,
+      background: "linear-gradient(90deg, #201520 0%, rgba(32, 21, 32, 0) 100%)"
+    },
+    "&::after": {
+      right: 0,
+      background: "linear-gradient(-90deg, #201520 0%, rgba(32, 21, 32, 0) 100%)"
+    }
+  },
+  coinStrip: {
+    display: "flex",
+    overflowX: "auto",
+    position: "relative",
+    padding: "0 10px",
+    "&::-webkit-scrollbar": {
+      display: "none"
+    },
+    "-ms-overflow-style": "none",
+    "scrollbar-width": "none"
+  },
+  coinWrapper: {
+    display: "flex",
+    alignItems: "center",
+    gap: "8px"
+  },
+  ballImage: {
+    width: "24px",
+    height: "24px",
+    objectFit: "contain",
+    flexShrink: 0
+  },
+  coin: {
+    width: "30px",
+    height: "30px",
+    borderRadius: "50%",
+    margin: "0 5px",
+    flexShrink: 0,
+    "&.orange": {
+      background: "linear-gradient(45deg, #FF6B00, #FF9900)"
+    },
+    "&.purple": {
+      background: "linear-gradient(45deg, #E41AFA, #8A1296)"
+    }
+  },
+  lastDiv:{
+    display: "flex",
+    alignItems: "center",
+    gap: "20px",
+    flex: "1",
+    justifyContent: "space-between",
+    padding: "0 10px"
+  },
+  gameRow: {
+    display: "flex",
+    alignItems: "center",
+    padding: "5px",
+    gap: "20px",
+    background: "#160d14",
+    borderRadius: "8px",
+    marginBottom: "8px",
+    position: "relative",
+    "&:hover": {
+      background: "rgba(32, 21, 32, 0.5)"
+    }
+  },
+  darkOverlay: {
+    position: "relative",
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: "rgba(0, 0, 0, 0.1)",
+      borderRadius: "8px",
+      zIndex: 1
+    },
+    "& > *": {
+      opacity: 0.15
     }
   },
   playerSection: {
     display: "flex",
-    margin: "0px 75px",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-    padding: "0 60px",
-    position: "relative",
-    marginBottom: "40px",
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: "column",
-      margin: "0px 20px",
-      padding: "0 20px",
-      alignItems: "center",
-      gap: "30px",
-      position: "relative"
-    }
-  },
-  playerSide: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "15px",
-  },
-  playerInfo: {
-    display: "flex",
-    flexDirection: "column",
     alignItems: "center",
     gap: "8px",
-  },
-  avatarContainer: {
-    position: "relative",
-    width: "70px",
-    height: "70px",
-    marginBottom: "50px",
-  },
-  playerAvatar: {
-   
-  },
-  maxbellIcon:{
-    position: "absolute",
-    width: "300px",
-    top: "-80px",
-    left: "-112px",
-},
-  smallCoin: {
-    position: "absolute",
-    bottom: "-50px",
-    right: "-26px",
-    width: "34px",
-    height: "34px",
-  },
-  playerName: {
-    color: "#fff",
-    fontSize: "18px",
-    fontFamily: "Rubik",
-    fontWeight: 500,
-    
-    },
-   betAmount: {
-    color: "#FFB019",
-    border: "1px solid #7E7681",
-    display: "flex",
-    padding: "2px 15px 2px 4px",
-    fontSize: "11px",
-    background: "#3A3139",
-    alignItems: "center",
-    fontFamily: "Rubik",
-    borderRadius:"10px",
-  },
-  itemCount: {
-    color: "rgba(255, 255, 255, 0.5)",
-    fontSize: "12px",
-    fontFamily: "Rubik",
-    background: "#3A3139",
-    padding: "4px 12px",
-    borderRadius:"5px",
-    border: "1px solid #7E7681"
-  },
-  winChance: {
-    color: "rgba(255, 255, 255, 0.5)",
-    fontSize: "12px",
-    fontFamily: "Rubik",
-    padding: "4px 12px",
-    background: "rgba(255, 255, 255, 0.1)",
-    borderRadius: "4px",
-  },
-  centerIcon: {
-    position: "absolute",
-    left: "50%",
-    top: "0px",
-    transform: "translateX(-50%)",
-    height: "180px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    [theme.breakpoints.down('sm')]: {
-      position: "relative",
-      left: "auto",
-      transform: "none",
-      order: -1,
-      marginBottom: "20px",
-      height: "120px",
-      width: "100%",
-      display: "flex",
-      justifyContent: "center"
-    }
-  },
-  logoIcon: {
-    height: "100%",
-    objectFit: "contain",
-    [theme.breakpoints.down('sm')]: {
-      height: "120px"
-    }
-  },
-  itemsContainer: {
-    display: "flex",
-    gap: "8px",
-    marginTop: "5px",
-  },
-  itemBoxIcon: {
-    width: "60px",
-    height: "60px",
+    background: "#1c0d1b",
+    padding: "4px",
     borderRadius: "8px",
-    background: "#1B1118",
+    position: "relative",
+    border:"1px solid #2D222F",
+  },
+  playerAvatarContainer: {
+    position: "relative",
+    width: "50px",
+    height: "50px",
+    "& img": {
+      height: "100%",
+    }
+  },
+  crossIcon: {
+    color: "#666",
+    fontSize: "16px",
+    margin: "0 2px",
+    fontWeight: "bold"
+  },
+  itemsSection: {
     display: "flex",
+    flex: "0 auto",
+    gap: "10px",
     alignItems: "center",
-    justifyContent: "center",
-    padding: "8px",
+    borderRadius: "8px",
+    background: "linear-gradient(to right, #1B0E1B 0%, #160D14 25%, #160D14 75%, #1B0E1B 100%)",    
+    padding: "4px 0px 4px 10px",
+    marginRight: "20px"
   },
   itemBox: {
-    width: "45px",
-    height: "45px",
-    borderRadius: "8px",
+    width: "32px",
+    height: "32px",
+    borderRadius: "4px",
+    background: "#2A1F2D",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "8px",
-  },
-  bottomItems: {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "0 40px",
-    marginTop: "20px",
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: "column",
-      alignItems: "center",
-      gap: "20px",
-      padding: "0 20px",
+    "& img": {
+      width: "100%",
+      height: "100%",
+      objectFit: "contain",
+      padding: "4px"
     }
   },
-  itemsBlock: {
-    padding: "30px 80px",
-    [theme.breakpoints.down('sm')]: {
-      padding: "20px",
-      width: "90%",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center"
-    }
-  },
-  itemsGroup: {
-    display: "flex",
-    gap: "15px",
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: "center",
-      flexWrap: "wrap",
-      width: "100%"
-    }
-  },
-  blockHeader: {
-    display: "flex",
-    justifyContent: "flex-end",
-    marginBottom: "15px",
-    gap: "12px",
-    [theme.breakpoints.down('sm')]: {
-      width: "100%"
-    }
-  },
-  blockHeaderLeft: {
-    display: "flex",
-    justifyContent: "flex-start",
-    marginBottom: "15px",
-    gap: "12px",
-    [theme.breakpoints.down('sm')]: {
-      width: "100%"
-    }
-  },
-  winChanceText: {
-    fontSize: "12px",
-    fontFamily: "Rubik",
-    color: "rgba(255, 255, 255, 0.5)",
-  },
-  itemWrapper: {
+  multiplierBox: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     gap: "4px",
-    padding: "8px 0px",
-    backgroundColor: "#1B1118",
-    borderRadius: "10px",
-    width: "100px",
-    [theme.breakpoints.down('sm')]: {
-      width: "45%",
-      maxWidth: "100px"
+    "& .multiplier": {
+      fontSize: "16px",
+      color: "#C1B876",
+      fontWeight: "500"
+    },
+    "& .subtext": {
+      fontSize: "10px",
+      color: "#666",
+      whiteSpace: "nowrap"
     }
   },
-  itemName: {
-    color: "#fff",
-    fontSize: "12px",
-    fontFamily: "Rubik",
-  },
-  itemPrice: {
+  betAmount: {
     display: "flex",
     alignItems: "center",
-    color: "#FFB019",
-    fontSize: "10px",
-    fontFamily: "Rubik",
+    gap: "4px",
+    padding: "8px 12px",
+    "& img": {
+      height: "35px",
+      marginRight: "-10px"
+    },
+    "& span": {
+      color: "#C1B876",
+      fontSize: "14px"
+    }
   },
+  eyeFilledContainer: {
+    width: "32px",
+    height: "32px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "#201520",
+    borderRadius: "4px",
+    cursor: "pointer",
+    "& img": {
+      width: "16px",
+      height: "16px",
+      opacity: 0.6
+    },
+    "&:hover img": {
+      opacity: 1
+    }
+  },
+  settingsIcon: {
+    width: "24px",
+    height: "24px",
+    color: "#666",
+    cursor: "pointer"
+  }
 }));
 
 const CoinflipNew = () => {
   const classes = useStyles();
+  const coins = Array(40).fill('').map((_, i) => i % 2 === 0 ? 'yellow' : 'pink');
 
   return (
     <MainLayout>
       <Box className={classes.wrapper}>
-        <Box style={{ width: "100%" }}>
-          <Box className={classes.mainContainer}>
-            <Box className={classes.playerSection}>
-              {/* Left Player */}
-              <Box className={classes.playerSide}>
-                <Box className={classes.playerInfo}>
-                <Typography className={classes.playerName}>Maxwell</Typography>
-                <Box className={classes.betAmount}>
-                    <img src={orangeIcon} alt="coin"  style={{ width: "16px", height: "16px" }} />
-                    45.00
-                  </Box>
-                  <Box className={classes.avatarContainer}>
-                      <img src={maxbell} alt="Maxwell"  className={classes.maxbellIcon} />
-                    <img src={gubrailIcon} alt="coin" className={classes.smallCoin} />
-                  </Box>
-                </Box>
-              </Box>
-
-              {/* Center Logo */}
-              <Box className={classes.centerIcon}>
-                <img src={mainCircle} alt="logo" className={classes.logoIcon} />
-              </Box>
-
-              {/* Right Player */}
-              <Box className={classes.playerSide}>
-                <Box className={classes.playerInfo}>
-                <Typography className={classes.playerName}>Gubrial</Typography>
-                  <Box className={classes.betAmount}>
-                    <img src={orangeIcon} alt="coin" style={{ width: "16px", height: "16px" }} />
-                    35.00
-                  </Box>
-                  <Box className={classes.avatarContainer}>
-                    <Box 
-                      className={classes.playerAvatar}
-                      style={{ background: "#DC9200" }}
-                    >
-                      <img src={gubrail} alt="Gubrial" className={classes.maxbellIcon} />
-                    </Box>
-                    <img src={maxbellIcon} alt="coin" className={classes.smallCoin} />
-                  </Box>
-                  
-                </Box>
-              </Box>
-            </Box>
-
-            <Box className={classes.bottomItems}>
-              <Box className={classes.itemsBlock}>
-                <Box className={classes.blockHeaderLeft}>
-                  <Typography className={classes.itemCount}>2 Item</Typography>
-                  <Typography className={classes.winChanceText}>48.00% Win Chance</Typography>
-                </Box>
-                <Box className={classes.itemsGroup}>
-                  <Box className={classes.itemWrapper}>
-                    <img src={frostbite} className={classes.itemBoxIcon} alt="Frostbite" />
-                    <Typography className={classes.itemName}>Frostbite</Typography>
-                    <Box className={classes.itemPrice}>
-                      <img src={orangeIcon} alt="coin" style={{ width: "14px", height: "14px" }} />
-                      10.00
-                    </Box>
-                  </Box>
-                  <Box className={classes.itemWrapper}>
-                    <img src={hoodie} className={classes.itemBoxIcon} alt="Hoodie" />
-                    <Typography className={classes.itemName}>Hoodie</Typography>
-                    <Box className={classes.itemPrice}>
-                      <img src={orangeIcon} alt="coin" style={{ width: "14px", height: "14px" }} />
-                      10.00
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-
-              <Box className={classes.itemsBlock}>
-                <Box className={classes.blockHeader}>
-                  <Typography className={classes.winChanceText}>48.00% Win Chance</Typography>
-                  <Typography className={classes.itemCount}>3 Item</Typography>
-                </Box>
-                <Box className={classes.itemsGroup}>
-                  <Box className={classes.itemWrapper}>
-                    <img src={temperedMask} className={classes.itemBoxIcon} alt="Tempered Mask" />
-                    <Typography className={classes.itemName}>Tempered Mask</Typography>
-                    <Box className={classes.itemPrice}>
-                      <img src={orangeIcon} alt="coin" style={{ width: "14px", height: "14px" }} />
-                      10.00
-                    </Box>
-                  </Box>
-                  <Box className={classes.itemWrapper}>
-                    <img src={alienYellow} className={classes.itemBoxIcon} alt="Alien Yellow" />
-                    <Typography className={classes.itemName}>Alien Yellow</Typography>
-                    <Box className={classes.itemPrice}>
-                      <img src={orangeIcon} alt="coin" style={{ width: "14px", height: "14px" }} />
-                      10.00
-                    </Box>
-                  </Box>
-                  <Box className={classes.itemWrapper}>
-                    <img src={superman} className={classes.itemBoxIcon} alt="Superman" />
-                    <Typography className={classes.itemName}>Superman</Typography>
-                    <Box className={classes.itemPrice}>
-                      <img src={orangeIcon} alt="coin" style={{ width: "14px", height: "14px" }} />
-                      10.00
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
+        <div className={classes.header}>
+          <p>Coin Flip</p>
+          <div className={classes.centerContainer}>
+            <p>Coin Flip</p>
+            <span className={classes.activeGames}>3 Active Games</span>
+          </div>
+          <div className={classes.createButton}>
+            <img src={createButtonImg} alt="coin" />
+            <Link className={classes.navItem} to="/create-coinflip">Create Coin Flip</Link>
+          </div>
+        </div>
+        <Box className={classes.recentFlipsContainer}>
+          <Typography className={classes.recentFlipsHeader}>
+            Recent Flips
+          </Typography>
+          <div className={classes.coinStripContainer}>
+            <div className={classes.coinStrip}>
+              <div className={classes.coinWrapper}>
+                {coins.map((type, index) => (
+                  <img
+                    key={index}
+                    src={type === 'yellow' ? yellowBall : pinkBall}
+                    alt={`${type} ball`}
+                    className={classes.ballImage}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </Box>
+        {[1, 2, 3, 4, 5, 6].map((game, index) => (
+          <div 
+            key={game} 
+            className={`${classes.gameRow} ${index > 2 ? classes.darkOverlay : ''}`}
+          >
+            <div className={classes.playerSection}>
+              <img src={leftUserIcon} alt="Player 1" style={{height: "80px"}}/>
+              <img src={cross} alt="Cross" style={{height: "30px"}}/>
+              <img src={rightUserIcon} alt="Player 2" style={{height: "80px"}}/>
+            </div>
+            
+            <div className={classes.itemsSection}>
+              <img src={hoodie} alt="hoodie" style={{height: "80px"}}/>
+              <img src={alienYellow } alt="alienYellow" style={{height: "80px"}}/>
+              <img src={skullPurple} alt="skullPurple" style={{height: "80px"}}/>
+              <img src={superman} alt="superman" style={{height: "80px"}}/>
+              <img src={blueJacket} alt="blueJacket" style={{height: "80px"}}/>
+              <img src={superman2} alt="superman2" style={{height: "80px"}}/>
+              <img src={skullIcon} alt="skullIcon" style={{height: "80px"}}/>
+              <img src={frostbite} alt="frostbite" style={{height: "80px"}}/>
+            </div>
+            <div className={classes.lastDiv}>
+              <div className={classes.multiplierBox}>
+                <span className="multiplier">2×</span>
+                <span className="subtext">Double down</span>
+              </div>
+              
+              <div className={classes.betAmount}>
+                <img src={amountIcon} alt="coin" />
+                <span>50.50</span>
+              </div>
+
+              <div className={classes.eyeFilledContainer}>
+                <img src={eyeFilled} alt="View" />
+              </div>
+            </div>
+          </div>
+        ))}
       </Box>
       <CustomTable columns={columns} data={HomeTableData} />
     </MainLayout>

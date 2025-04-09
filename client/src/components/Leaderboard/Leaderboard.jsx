@@ -678,7 +678,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BlackJackNew = () => {
+const Leaderboard = () => {
   const classes = useStyles();
 
   const topPlayers = [
@@ -896,4 +896,4 @@ const BlackJackNew = () => {
   );
 };
 
-export default BlackJackNew;
+export default Leaderboard; 

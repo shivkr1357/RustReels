@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Typography } from "@material-ui/core";
 import ChatIcon from "@material-ui/icons/Chat";
+import { Link } from "react-router-dom";
 import loginIcon from "../../../assets/Rustreels/Branding/icons/loginIcon.png";
 import gameIcon from "../../../assets/gameIcon.png";
 import arrowLeft from "../../../assets/arrow_left.png";
@@ -39,6 +40,7 @@ const useStyles = makeStyles(theme => ({
     color: "#a8a8a8",
     transition: "color 0.2s",
     padding: "8px 16px",
+    textDecoration: "none",
     borderRadius: "4px",
     "&:hover": {
       color: "white",
@@ -103,13 +105,13 @@ const Topbar = ({ onClick }) => {
             <img src={arrowLeft} className={classes.arrowLeft} alt="arrow icon not found" />
           </Box>
 
-          <Box className={classes.navItem}>
+          <Link className={classes.navItem} to="/earn-with-us">
             <Typography variant="body2">Earn With Us</Typography>
-          </Box>
+          </Link>
 
-          <Box className={classes.navItem}>
+          <Link className={classes.navItem} to="/leaderboard">
             <Typography variant="body2">Leaderboard</Typography>
-          </Box>
+          </Link>
 
           <Box className={classes.navItem}>
             <Typography variant="body2" style={{ color: "#FE49FF" }}>Rewards</Typography>
